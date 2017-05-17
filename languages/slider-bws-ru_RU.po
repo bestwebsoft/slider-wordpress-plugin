@@ -1,0 +1,685 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Slider\n"
+"POT-Creation-Date: 2017-05-16 12:15+0300\n"
+"PO-Revision-Date: 2017-05-16 12:15+0300\n"
+"Last-Translator: \n"
+"Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-sldr-settings.php:28 includes/class-sldr-settings.php:35
+#: slider-bws.php:1908 slider-bws.php:1926
+msgid "Settings"
+msgstr "Настройки"
+
+#: includes/class-sldr-settings.php:29
+msgid "Misc"
+msgstr "Разное"
+
+#: includes/class-sldr-settings.php:30
+msgid "Custom Code"
+msgstr "Пользовательский код"
+
+#: includes/class-sldr-settings.php:34 slider-bws.php:411
+msgid "Images"
+msgstr "Изображения"
+
+#: includes/class-sldr-settings.php:81
+msgid "Settings saved."
+msgstr "Настройки сохранены."
+
+#: includes/class-sldr-settings.php:93
+msgid "Slider Images"
+msgstr "Изображения слайдера"
+
+#: includes/class-sldr-settings.php:98
+msgid "Adding images requires JavaScript."
+msgstr "Добавление изображений требует наличия JavaScript."
+
+#: includes/class-sldr-settings.php:101
+msgid "Add Media"
+msgstr "Добавить медиафайл"
+
+#: includes/class-sldr-settings.php:117
+msgid "Slider Settings"
+msgstr "Настройки слайдера"
+
+#: includes/class-sldr-settings.php:123
+msgid "Lazy Load"
+msgstr "Загрузка по требованию"
+
+#: includes/class-sldr-settings.php:127
+msgid ""
+"Enable to use lazy load for images (recommended for long pages). Images "
+"outside of viewport are not loaded until user scrolls to them."
+msgstr ""
+"Разрешить использовать загрузку изображений по требованию (рекомендуется для "
+"длинных страниц). Изображения за пределами области просмотра не загружаются, "
+"пока пользователь не прокрутится к ним."
+
+#: includes/class-sldr-settings.php:132
+msgid "Auto Height"
+msgstr "Автоматическая высота"
+
+#: includes/class-sldr-settings.php:136
+msgid ""
+"Enable to change slider height automatically (according to the highest "
+"slide)."
+msgstr ""
+"Включить автоматическую смену высоты слайдера (в соответствии с максимальной "
+"высотой слайда)."
+
+#: includes/class-sldr-settings.php:142
+msgid "Autoplay"
+msgstr "Автовоспроизведение"
+
+#: includes/class-sldr-settings.php:145
+msgid "Enable to turn autoplay on for the slideshow."
+msgstr "Включить автовоспроизведение слайд-шоу."
+
+#: includes/class-sldr-settings.php:150
+msgid "Autoplay Timeout"
+msgstr "Задержка Автовоспроизведения"
+
+#: includes/class-sldr-settings.php:153
+msgid "ms"
+msgstr "мс"
+
+#: includes/class-sldr-settings.php:158
+msgid "Autoplay Pause"
+msgstr "Пауза Автовоспроизведения"
+
+#: includes/class-sldr-settings.php:162
+msgid "Enable to pause autoplay on mouse hover."
+msgstr "Включить паузу автовоспроизведения при наведении указателем мыши."
+
+#: includes/class-sldr-settings.php:167
+msgid "Loop"
+msgstr "Цикл"
+
+#: includes/class-sldr-settings.php:171
+msgid "Enable to loop the slideshow."
+msgstr "Включить цикличность для слайдера."
+
+#: includes/class-sldr-settings.php:176
+msgid "Navigation"
+msgstr "Навигация"
+
+#: includes/class-sldr-settings.php:181
+msgid "Arrows"
+msgstr "Стрелки"
+
+#: includes/class-sldr-settings.php:186
+msgid "Dots"
+msgstr "Точки"
+
+#: includes/class-sldr-settings.php:192
+msgid "Number of Visible Images per Slide"
+msgstr "Количество видимых изображений на слайде"
+
+#: includes/class-sldr-settings.php:196
+msgid "Number of Images which are displayed simultaneously on a single slide."
+msgstr ""
+"Количество изображений, которые отображаются одновременно на одном слайде."
+
+#: slider-bws.php:36
+msgid "Sliders"
+msgstr "Слайдеры"
+
+#: slider-bws.php:37
+msgid "Add new"
+msgstr "Добавить новый"
+
+#: slider-bws.php:37 slider-bws.php:1139
+msgid "Add New"
+msgstr "Добавить новый"
+
+#: slider-bws.php:38 slider-bws.php:1166 slider-bws.php:1239
+msgid "Slider Categories"
+msgstr "Рубрики слайдеров"
+
+#: slider-bws.php:39 slider-bws.php:1357
+msgid "Slider Global Settings"
+msgstr "Общие Настройки Слайдера"
+
+#: slider-bws.php:39
+msgid "Global Settings"
+msgstr "Общие Настройки"
+
+#: slider-bws.php:292 slider-bws.php:1485
+msgid "slider"
+msgstr "слайдер"
+
+#: slider-bws.php:293
+msgid "sliders"
+msgstr "слайдеры"
+
+#: slider-bws.php:320
+msgid "No Thumbnail Set."
+msgstr "Миниатюра не задана."
+
+#: slider-bws.php:330
+msgid "No Images Set."
+msgstr "Изображения не заданы."
+
+#: slider-bws.php:356
+msgid "No Category Set."
+msgstr "Рубрики не заданы."
+
+#: slider-bws.php:376 slider-bws.php:630
+msgid "Edit"
+msgstr "Редактировать"
+
+#: slider-bws.php:377 slider-bws.php:463 slider-bws.php:631 slider-bws.php:691
+msgid "Delete"
+msgstr "Удалить"
+
+#: slider-bws.php:380 slider-bws.php:1479
+msgid "no title"
+msgstr "без названия"
+
+#: slider-bws.php:409
+msgid "Thumbnail"
+msgstr "Миниатюра"
+
+#: slider-bws.php:410 slider-bws.php:890
+msgid "Title"
+msgstr "Название"
+
+#: slider-bws.php:412
+msgid "Category"
+msgstr "Рубрика"
+
+#: slider-bws.php:413 slider-bws.php:663
+msgid "Shortcode"
+msgstr "Шорткод"
+
+#: slider-bws.php:414
+msgid "Date"
+msgstr "Дата"
+
+#: slider-bws.php:420
+msgid "No Sliders Found"
+msgstr "Слайдеры не найдены"
+
+#: slider-bws.php:445
+msgid "All Categories"
+msgstr "Все рубрики"
+
+#: slider-bws.php:451
+msgid "Filter"
+msgstr "Фильтр"
+
+#: slider-bws.php:661 slider-bws.php:1225 slider-bws.php:1259
+msgid "Name"
+msgstr "Название"
+
+#: slider-bws.php:662
+msgid "Count"
+msgstr "Количество"
+
+#: slider-bws.php:669
+msgid "No Categories Found"
+msgstr "Рубрики не найдены"
+
+#: slider-bws.php:795
+msgid "No images found."
+msgstr "Изображения не заданы."
+
+#: slider-bws.php:842
+msgid "Bulk Select"
+msgstr "Выбор"
+
+#: slider-bws.php:843
+msgid "Cancel Selection"
+msgstr "Отменить выбор"
+
+#: slider-bws.php:844
+msgid "Delete Selected"
+msgstr "Удалить Выбранные"
+
+#: slider-bws.php:867
+msgid "Remove Image from Slider"
+msgstr "Удалить изображение из слайдера"
+
+#: slider-bws.php:870
+msgid "Edit Image Info"
+msgstr "Изменить информацию изображения"
+
+#: slider-bws.php:871
+msgid "Deselect"
+msgstr "Отменить выбор"
+
+#: slider-bws.php:881
+msgid "File name"
+msgstr "Название файла"
+
+#: slider-bws.php:882
+msgid "File type"
+msgstr "Тип файла"
+
+#: slider-bws.php:884
+msgid "Dimensions"
+msgstr "Размеры"
+
+#: slider-bws.php:895
+msgid "Description"
+msgstr "Описание"
+
+#: slider-bws.php:899
+msgid "Button URL"
+msgstr "Ссылка для кнопки"
+
+#: slider-bws.php:904
+msgid "Button Text"
+msgstr "Текст кнопки"
+
+#: slider-bws.php:910
+msgid "Edit more details"
+msgstr "Изменить детали"
+
+#: slider-bws.php:912
+msgid "Remove from Slider"
+msgstr "Удалить из слайдера"
+
+#: slider-bws.php:936
+msgid "Slider deleted."
+msgstr "Слайдер удален."
+
+#: slider-bws.php:948
+msgid "Search Sliders"
+msgstr "Поиск слайдеров"
+
+#: slider-bws.php:1134
+msgid "Slider updated."
+msgstr "Слайдер обновлен."
+
+#: slider-bws.php:1139
+msgid "Edit Slider"
+msgstr "Редактировать слайдер"
+
+#: slider-bws.php:1141
+msgid "Add New Slider"
+msgstr "Создать новый слайдер"
+
+#: slider-bws.php:1152
+msgid "Enter title here"
+msgstr "Введите заголовок"
+
+#: slider-bws.php:1165 slider-bws.php:1301
+msgid "Publish"
+msgstr "Опубликовать"
+
+#: slider-bws.php:1168
+msgid "Slider Shortcode"
+msgstr "Шорткод слайдера"
+
+#: slider-bws.php:1192
+msgid "Category deleted."
+msgstr "Рубрика удалена."
+
+#: slider-bws.php:1212
+msgid "Category updated."
+msgstr "Рубрика обновлена."
+
+#: slider-bws.php:1218
+msgid "Edit Category"
+msgstr "Редактировать рубрику"
+
+#: slider-bws.php:1228 slider-bws.php:1261
+msgid "The name is how it appears on your site."
+msgstr "Название определяет, как элемент будет отображаться на вашем сайте."
+
+#: slider-bws.php:1233 slider-bws.php:1301
+msgid "Update"
+msgstr "Обновить"
+
+#: slider-bws.php:1249
+msgid "Search Slider Categories"
+msgstr "Поиск рубрик слайдеров"
+
+#: slider-bws.php:1256
+msgid "Add New Slider Category"
+msgstr "Добавить новую рубрику слайдера"
+
+#: slider-bws.php:1264 slider-bws.php:1344
+msgid "Add New Category"
+msgstr "Добавить новую рубрику"
+
+#: slider-bws.php:1287
+msgid ""
+"Add a slider to your posts, pages, custom post types or widgets by using the "
+"following shortcode:"
+msgstr ""
+"Добавить слайдер на ваши записи, страницы, пользовательские типы записей или "
+"виджеты с помощью данного шорткода:"
+
+#: slider-bws.php:1339
+msgid "No Slider Category Set"
+msgstr "Рубрики слайдера не заданы"
+
+#: slider-bws.php:1397
+msgid "Warning"
+msgstr "Внимание"
+
+#: slider-bws.php:1397
+msgid ""
+"You can add only images or video (in format: MP4, WebM or Ogg) to the slider."
+msgstr ""
+"В слайдер можно добавлять только изображения или видео (в формате: MP4, WebM "
+"или Ogg)."
+
+#: slider-bws.php:1487
+msgid "Sorry, no slider found."
+msgstr "Извините, не найдено ни одного слайдера."
+
+#: slider-bws.php:1504
+msgid "slider category"
+msgstr "рубрика слайдера"
+
+#: slider-bws.php:1506
+msgid "Sorry, no sliders categories found."
+msgstr "Извините, рубрики слайдера не найдены."
+
+#: slider-bws.php:1796
+msgid "Sorry, nothing found."
+msgstr "Извините, ничего не найдено."
+
+#: slider-bws.php:1826
+msgid ""
+"You are about to remove these items from this slider.\n"
+" 'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Вы собираетесь удалить эти изображения из этого слайдера.\n"
+" «Отмена» — оставить, «ОК» — удалить."
+
+#: slider-bws.php:1827
+msgid ""
+"You are about to remove this item from the slider.\n"
+" 'Cancel' to stop, 'OK' to delete."
+msgstr ""
+"Вы собираетесь удалить это изображение из этого слайдера.\n"
+" «Отмена» — оставить, «ОК» — удалить."
+
+#: slider-bws.php:1828
+msgid "Insert Media"
+msgstr "Добавить медиафайл"
+
+#: slider-bws.php:1829
+msgid "Insert"
+msgstr "Добавить"
+
+#: slider-bws.php:1830
+msgid "No images found"
+msgstr "Изображения не заданы"
+
+#: slider-bws.php:1869
+msgid "Category per page"
+msgstr "Рубрик на странице"
+
+#: slider-bws.php:1881
+msgid "Sliders per page"
+msgstr "Слайдеров на странице"
+
+#: slider-bws.php:1909
+msgid "FAQ"
+msgstr "Частые вопросы"
+
+#: slider-bws.php:1910
+msgid "Support"
+msgstr "Тех.поддержка"
+
+#~ msgid "Enable to autoplay slideshow."
+#~ msgstr "Включить автовоспроизведение слайд-шоу."
+
+#~ msgid "Enable to loop slideshow."
+#~ msgstr "Включить цикличность для слайдера."
+
+#~ msgid "Slider"
+#~ msgstr "Слайдер"
+
+#~ msgid "Delete slider"
+#~ msgstr "Удалить слайдер"
+
+#~ msgid "Delete from slider"
+#~ msgstr "Удалить из слайдера"
+
+#~ msgid "Slide"
+#~ msgstr "Слайды"
+
+#~ msgid "This field will display slide title."
+#~ msgstr "Это поле содержит название слайда."
+
+#~ msgid "This field will display slide description."
+#~ msgstr "Это поле содержит описание слайда."
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid ""
+#~ "By clicking on the button you&#8217;ll go to the link (if the field is "
+#~ "filled)."
+#~ msgstr ""
+#~ "При нажатии на кнопку вы перейдете по этой ссылке (если поле заполнено)."
+
+#~ msgid "Button text"
+#~ msgstr "Текст кнопки"
+
+#~ msgid "This field will display text in slide button."
+#~ msgstr "Это поле содержит текст кнопки."
+
+#~ msgid "Select"
+#~ msgstr "Выбрать"
+
+#~ msgid "Edit Attachment Info"
+#~ msgstr "Редактировать атрибуты приложения"
+
+#~ msgid "Custom URL"
+#~ msgstr "Пользовательская ссылка"
+
+#~ msgid "Add images requires JavaScript."
+#~ msgstr "Для добавления изображений необходим JavaScript."
+
+#~ msgid "This Slider Settings"
+#~ msgstr "Настройки текущего слайдера"
+
+#~ msgid "Loop in slideshow"
+#~ msgstr "Цикл в слайдшоу"
+
+#~ msgid "Enable loop in slideshow"
+#~ msgstr "Включить цикл в слайдшоу"
+
+#~ msgid "Navigation arrow"
+#~ msgstr "Навигация"
+
+#~ msgid "Display navigation arrow in slider"
+#~ msgstr "Отображать навигационные стрелки в слайдере"
+
+#~ msgid "Display navigation dots in slider"
+#~ msgstr "Отображать точки навигации в слайдере"
+
+#~ msgid "Centering slider image"
+#~ msgstr "Центрировать изображение слайдера"
+
+#~ msgid "Slider image will be centering"
+#~ msgstr "Изображение слайдера будет размещено по центру"
+
+#~ msgid "Items per page"
+#~ msgstr "Элементов на странице"
+
+#~ msgid "Set items per page"
+#~ msgstr "Задать количество элементов на странице"
+
+#~ msgid "Autoplay option"
+#~ msgstr "Опции автоматического перелистывания"
+
+#~ msgid "Enable autoplay in slider"
+#~ msgstr "Включить автоматического перелистывания в слайдере"
+
+#~ msgid "Set pause when slideshow is hover"
+#~ msgstr "Включить паузу при наведении курсора мыши на слайд-шоу"
+
+#~ msgid "Set autoplay timeout in ms"
+#~ msgstr "Задать время автоматического пролистывания в мс"
+
+#~ msgid "Search Slider Category"
+#~ msgstr "Искать рубрику слайдера"
+
+#~ msgid "The title is how it appears on your site."
+#~ msgstr "Название определяет, как элемент будет отображаться на вашем сайте."
+
+#~ msgid ""
+#~ "If you would like to add a slider to your page or post, please use %s "
+#~ "button"
+#~ msgstr ""
+#~ "Если вы хотите добавить слайдер на вашу страницу или в вашу запись, то "
+#~ "используйте кнопку %s\""
+
+#~ msgid ""
+#~ "You can add the slider to your page or post by clicking on %s button in "
+#~ "the content edit block using the Visual mode. If the button isn't "
+#~ "displayed, please use the shortcode below"
+#~ msgstr ""
+#~ "Вы можете добавить слайдер на вашу страницу или в вашу запись нажав на "
+#~ "кнопку %s в блоке редактирования контента в визуальном режиме. Если "
+#~ "кнопка не отображается, пожалуйста, используйте шорткод ниже."
+
+#~ msgid "Add this shortcode to a page, post or widget to display a slider"
+#~ msgstr ""
+#~ "Добавьте этот шорткод на страницу, в запись или виджет для отображения "
+#~ "слайдера"
+
+#~ msgid "Update Settings"
+#~ msgstr "Обновить настройки"
+
+#~ msgid "All plugin settings were restored."
+#~ msgstr "Настройки плагина восстановлены."
+
+#~ msgid ""
+#~ "If you would like to add a Slider to your page or post, please use %s "
+#~ "button"
+#~ msgstr ""
+#~ "Если вы хотите добавить слайдер на вашу страницу или в запись, "
+#~ "используйте кнопку %s"
+
+#~ msgid ""
+#~ "You can add the Slider to your page or post by clicking on %s button in "
+#~ "the content edit block using the Visual mode. If the button isn't "
+#~ "displayed, please use the shortcode %s, where * stands for slider ID"
+#~ msgstr ""
+#~ "Вы можете добавить слайдер на вашу страницу или в запись, нажав на кнопку "
+#~ "%s в блоке редактирования контента в визуальном режиме. Если кнопка не "
+#~ "отображается,  пожалуйста, используйте шорткод %s, где * обозначает ID "
+#~ "слайдера."
+
+#~ msgid "Animation incoming slide"
+#~ msgstr "Анимация входящего слайда"
+
+#~ msgid "None"
+#~ msgstr "Нет"
+
+#~ msgid "Fade out"
+#~ msgstr "Исчезновение"
+
+#~ msgid "Slide out up"
+#~ msgstr "Слайд двигается вверх"
+
+#~ msgid "Set animation incoming slide."
+#~ msgstr "Задать анимацию входящего слайда."
+
+#~ msgid "Animation outgoing slide"
+#~ msgstr "Анимация исходящего слайда"
+
+#~ msgid "Set animation outgoing slide."
+#~ msgstr "Задать анимацию исходящего слайда."
+
+#~ msgid ""
+#~ "Lazy Load is delays loading of images in long web pages. Images outside "
+#~ "of viewport are not loaded until user scrolls to them."
+#~ msgstr ""
+#~ "Lazy Load создает задержку в загрузке изображений на больших веб-страниц. "
+#~ "Изображения вне видимого экрана не не загружаются, пока пользователь "
+#~ "пролистывает к ним."
+
+#~ msgid "Settings for image attributes"
+#~ msgstr "Настройки параметров изображения"
+
+#~ msgid "This setting change slider height according to heighest item."
+#~ msgstr ""
+#~ "Задать высоту слайдера в соответствии с изображением наибольшей высоты."
+
+#~ msgid "Save Changes"
+#~ msgstr "Сохранить изменения"
+
+#~ msgid ""
+#~ "You can add only images or video in format: MP4, WebM or Ogg to the slider"
+#~ msgstr ""
+#~ "Вы можете добавить в слайдер только изображения или видео формата: MP4, "
+#~ "WebM или Ogg."
+
+#~ msgid "Publish Slider"
+#~ msgstr "Опубликовать слайдер"
+
+#~ msgid "Set animation incoming slide"
+#~ msgstr "Задать анимацию входящего слайда"
+
+#~ msgid "Set animation outgoing slide"
+#~ msgstr "Задать анимацию исходящего слайда"
+
+#~ msgid "Select bulk action"
+#~ msgstr "Выбрать действие"
+
+#~ msgid "Bulk Actions"
+#~ msgstr "Действия"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#~ msgid "Category updated. Category deleted:"
+#~ msgstr "Рубрика обновлена. Рубрик удалено:"
+
+#~ msgid "You can add only images or video to the slider"
+#~ msgstr "Вы можете добавить в слайдер только изображение или видео"
+
+#~ msgid "Slider updated. Sliders deleted:"
+#~ msgstr "Слайдер обновлен. Слайдеров удалено:"
+
+#~ msgid "Slider updated. Slides added:"
+#~ msgstr "Слайдер обновлен. Слайдов добавлено:"
+
+#~ msgid "Slider updated. Slides deleted:"
+#~ msgstr "Слайдер обновлен. Слайдов удалено:"
+
+#~ msgid "Set video width in slideshow"
+#~ msgstr "Задать ширину видео в слайд-шоу"
+
+#~ msgid "Set video height in slideshow"
+#~ msgstr "Задать высоту видео в слайд-шоу"
+
+#~ msgid "You can add only images to the slider"
+#~ msgstr "Вы можете добавить в слайдер только изображение"
+
+#~ msgid "Select %s"
+#~ msgstr "Выбрать %s"
+
+#~ msgid ""
+#~ "You can add the Slider to your page or post by clicking on %s button in "
+#~ "the content edit block using the Visual mode. If the button isn't "
+#~ "displayed, please use the shortcode %s"
+#~ msgstr ""
+#~ "Вы можете добавить слайдер на вашу страницу или пост, нажав на кнопку %s "
+#~ "в визуальном режиме редактирования контента  Если кнопка не отображается, "
+#~ "пожалуйста, используйте шорткод %s, где * обозначает ID слайдера"
+
+#~ msgid "Edit &#8220;%s&#8221;"
+#~ msgstr "Редактировать &#8220;%s&#8221;"

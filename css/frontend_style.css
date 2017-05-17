@@ -1,0 +1,70 @@
+/**
+ * Slider frontend styles
+ */
+.entry-content .sldr_wrapper {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.sldr_wrapper .owl-theme .owl-nav [class*="owl-"],
+.sldr_wrapper .owl-theme .owl-nav [class*="owl-"]:hover {
+	position: absolute;
+	bottom: 50%;
+	background: transparent;
+}
+.sldr_wrapper .owl-next i,
+.sldr_wrapper .owl-prev i {
+	font-family: dashicons;
+	font-size: 5em;
+	color: #fff;
+	opacity: 0.5;
+}
+.sldr_wrapper .owl-next i:hover,
+.sldr_wrapper .owl-prev i:hover {
+	opacity: 1;
+}
+.sldr_wrapper .owl-prev {
+	left: 0;
+	float: left;
+}
+.sldr_wrapper .owl-next {
+	right: 0;
+	float: right;
+}
+.sldr_wrapper .owl-carousel .owl-dots {
+	margin: 0;
+	top: 0;
+}
+.sldr_wrapper .owl-carousel .dashicons,
+.sldr_wrapper .owl-carousel .dashicons-before::before {
+	width: auto;
+}
+.sldr_wrapper .owl-carousel .sldr_textoverlay h2,
+.sldr_wrapper .owl-carousel .sldr_textoverlay p,
+.sldr_wrapper .owl-carousel .sldr_textoverlay a {
+	position: absolute;
+	left: 10%;
+	color: #FFF;
+	display: inline-block;
+	overflow: hidden;
+	z-index: 1;
+}
+.sldr_wrapper .owl-carousel div .sldr_textoverlay h2 {
+	top: 10%;
+	font-size: 1.5em;
+}
+.sldr_wrapper .owl-carousel div .sldr_textoverlay p {
+	top: 38%;
+	font-size: 1em;
+	max-height: 35%;
+}
+.sldr_wrapper .owl-carousel div .sldr_textoverlay a {
+	padding: 0.5em;
+	top: 70%;
+	background: #000;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: none;
+}
+.sldr_wrapper .owl-carousel div .sldr_textoverlay a:hover {
+	background: #007acc;
+}
