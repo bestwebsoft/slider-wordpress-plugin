@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
 Requires at least: 3.9
-Tested up to: 4.7.4
-Stable tag: 1.0.0
+Tested up to: 4.9.1
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ Create beautiful slider that fits all your needs!
 	* Images
 	* Videos (WebM, MP4, Ogg)
 	* Slider Categories
-* Add Slider via shortcode to:	
+* Add Slider via shortcode to:
 	* Posts
 	* Pages
 	* Widgets
@@ -56,12 +56,10 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-The author of the Slider also recommends the following plugins:
-
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [Gallery](https://bestwebsoft.com/products/wordpress/plugins/gallery/?k=fe81f5feb5552cd2971f60d36e83c40f) - Add beautiful galleries, albums & images to your Wordpress website in a few clicks.
 
-== Installation == 
+== Installation ==
 
 1. Upload the `slider-bws` folder to `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
@@ -69,7 +67,7 @@ The author of the Slider also recommends the following plugins:
 3. You can adjust the necessary settings using your WordPress admin panel in "Sliders" > "Global Settings" and in "Settings" tabs from current slider.
 4. Create a page or a post and insert the shortcode [print_sldr id=*] or [print_sldr cat_id=*] into the text.
 
-== Frequently Asked Questions == 
+== Frequently Asked Questions ==
 
 = How the slide animate function works? =
 
@@ -105,10 +103,16 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
-= V1.0.0 - 17.05.2017 = 
+= V1.0.1 - 04.12.2017 =
+* Bug with shortcodes in WordPress Text Widget has been fixed.
+
+= V1.0.0 - 17.05.2017 =
 * Plugin released.
 
-== Upgrade Notice ==​
+== Upgrade Notice ==
 
-= V​1.0.0​ =
+= V1.0.1 =
+* Bugs fixed.
+
+= V1.0.0 =
 * Plugin released.

@@ -6,7 +6,7 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.0
+Version: 1.0.1
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -154,20 +154,20 @@ if ( ! function_exists( 'sldr_get_options_default' ) ) {
 			/* internal general */
 			'plugin_option_version' 	=> $sldr_plugin_info["Version"],
 			'first_install'				=> strtotime( "now" ),
-			'suggest_feature_banner'	=> 1,			
+			'suggest_feature_banner'	=> 1,
 			'display_settings_notice'	=> 1,
 			/* general */
-			'loop'						=>	false,
-			'nav'						=>	false,
-			'dots'						=>	false,
-			'items'						=>	'1',
-			'autoplay'					=>	false,
-			'autoplay_timeout'			=>	'2000',
-			'autoplay_hover_pause'		=>	false,
-			'lazy_load'					=>	false,
-			'auto_height'				=>	'1',
+			'loop'						=> false,
+			'nav'						=> false,
+			'dots'						=> false,
+			'items'						=> '1',
+			'autoplay'					=> false,
+			'autoplay_timeout'			=> '2000',
+			'autoplay_hover_pause'		=> false,
+			'lazy_load'					=> false,
+			'auto_height'				=> '1',
 			'order_by'					=> 'meta_value_num',
-			'order'						=> 'ASC'		
+			'order'						=> 'ASC'
 		);
 		return $option_defaults;
 	}
@@ -1222,10 +1222,9 @@ if ( ! function_exists( 'sldr_categories_render' ) ) {
 				<form method="post" action="admin.php?page=slider-categories.php&amp;sldr_category_id=<?php echo $id; ?>&amp;action=edit">
 					<table class="form-table">
 						<tr class="form-field form-required term-name-wrap">
-							<th><label for="name"><?php _e( 'Name', 'slider-bws' ); ?></label></th>
+							<th><label for="tag-name"><?php _e( 'Name', 'slider-bws' ); ?></label></th>
 							<td>
 								<input name="sldr_category_title" id="tag-name" required value="<?php echo esc_html( $slider_category_title_value ); ?>" size="40" type="text">
-								<p class="description"><?php _e( 'The name is how it appears on your site.', 'slider-bws' ); ?></p>
 							</td>
 						</tr>
 					</table>
@@ -1258,7 +1257,6 @@ if ( ! function_exists( 'sldr_categories_render' ) ) {
 									<div class="form-field form-required term-name-wrap">
 										<label for="tag-name"><?php _e( 'Name', 'slider-bws' ); ?></label>
 										<input name="sldr_category_title" id="tag-name" value="" size="40" required type="text">
-										<p><?php _e( 'The name is how it appears on your site.', 'slider-bws' ); ?></p>
 									</div>
 									<p class="submit">
 										<input type="submit" class="button-primary" value="<?php _e( 'Add New Category', 'slider-bws' ) ?>" />
@@ -1466,10 +1464,11 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 		global $wpdb; ?>
 		<div id="sldr" style="display:none;">
 			<fieldset>
-				<label>
+				<label for="sldr_shortcode_list">
 					<?php $slider_id_array = $wpdb->get_col( "SELECT `slider_id` FROM `" . $wpdb->prefix . "sldr_slider`" );
-					
 					if ( ! empty( $slider_id_array ) ) { ?>
+						<input type="radio" name="sldr_type" class="sldr_radio_shortcode_list" checked="checked">
+						<span class="title"><?php _e( 'slider', 'slider-bws' ); ?></span>
 						<select name="sldr_list" id="sldr_shortcode_list" style="max-width: 350px;">
 							<?php foreach ( $slider_id_array as $slider_id ) {
 								/* Get slider title from DB */
@@ -1482,16 +1481,17 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 								<option value="<?php echo $slider_id; ?>"><?php echo $slider_title; ?>(<?php echo $slider_date; ?>)</option>
 							<?php } ?>
 						</select>
-						<span class="title"><?php _e( 'slider', 'slider-bws' ); ?></span>
 					<?php } else { ?>
 						<span class="title"><?php _e( 'Sorry, no slider found.', 'slider-bws' ); ?></span>
 					<?php } ?>
 				</label>
 				<br/>
-				<label>
+				<label for="sldr_category_shortcode_list">
 					<?php /* Get category ID from DB */
 					$slider_category_id_array = $wpdb->get_col( "SELECT `category_id` FROM `" . $wpdb->prefix . "sldr_category`" );
 					if ( ! empty( $slider_category_id_array ) ) { ?>
+						<input type="radio" name="sldr_type" class="sldr_radio_category_list">
+						<span class="title"><?php _e( 'slider category', 'slider-bws' ); ?></span>
 						<select name="sldr_category_list" id="sldr_category_shortcode_list" style="max-width: 350px;">
 							<?php 
 							foreach ( $slider_category_id_array as $slider_category_id ) {
@@ -1501,7 +1501,6 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 							<?php unset ( $slider_category_id );
 							} /* end foreach */ ?>
 						</select>
-						<span class="title"><?php _e( 'slider category', 'slider-bws' ); ?></span>
 					<?php } else { ?>
 						<span class="title"><?php _e( 'Sorry, no sliders categories found.', 'slider-bws' ); ?></span>
 					<?php } ?>
@@ -1513,17 +1512,25 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 			<script type="text/javascript">
 				function sldr_shortcode_init() {
 					( function( $ ) {
-						$( '.mce-reset #sldr_shortcode_list, .mce-reset #sldr_display_short' ).on( 'click', function() {
+						$( '.mce-reset #sldr_shortcode_list, .mce-reset #sldr_display_short, .mce-reset .sldr_radio_shortcode_list' ).on( 'click', function() {
 							var sldr_list = $( '.mce-reset #sldr_shortcode_list option:selected' ).val();
 							var shortcode = '[print_sldr id=' + sldr_list + ']';
 							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
 						});
 
-						$( '.mce-reset #sldr_category_shortcode_list' ).on( 'click', function() {
+						$( '.mce-reset #sldr_category_shortcode_list, .mce-reset .sldr_radio_category_list' ).on( 'click', function() {
 							var sldr_category_list = $( '.mce-reset #sldr_category_shortcode_list option:selected' ).val();
 							var shortcode = '[print_sldr cat_id=' + sldr_category_list + ']';
 							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
 						});
+
+						$( '[name="sldr_type"]' ).on( 'click', function() {
+							$( this ).parent().find( 'select' ).focus();
+						} );
+
+						$( '#sldr_shortcode_list, #sldr_category_shortcode_list' ).on( 'focus', function() {
+							$( this ).parent().find( '[type="radio"]' ).attr( 'checked', true );
+						} );
 					} )(jQuery);
 				}
 			</script>
@@ -1694,10 +1701,10 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 
 						var cat_id = <?php echo json_encode( $cat_id ); ?>;
 
-						$( '#sldr_cat_carousel_'+ cat_id ).find( '.owl-item' );
+						$( '.sldr_cat_carousel_'+ cat_id ).find( '.owl-item' );
 
 						if ( $( 'body' ).hasClass( 'rtl' ) ) {
-							$( '#sldr_cat_carousel_' + cat_id ).owlCarousel( {
+							$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
 								loop: 				slider_category_settings.loop,
 								nav: 				slider_category_settings.nav,
 								dots: 				slider_category_settings.dots,
@@ -1716,7 +1723,7 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 								rtl: true
 							} );
 						} else {
-							$( '#sldr_cat_carousel_' + cat_id ).owlCarousel( {
+							$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
 								loop: 				slider_category_settings.loop,
 								nav: 				slider_category_settings.nav,
 								dots: 				slider_category_settings.dots,
@@ -1737,7 +1744,8 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 					} );
 				} ) (jQuery);
 			</script>
-			<?php echo '<div class="sldr_wrapper"><div id="sldr_cat_carousel_' . $cat_id . '" class="owl-carousel owl-theme">';
+
+			<?php echo '<div class="sldr_wrapper"><div class="sldr_cat_carousel_' . $cat_id . ' owl-carousel owl-theme">';
 
 			foreach ( $slider_categories_ids as $slider_categories_id ) {
 
@@ -1831,7 +1839,7 @@ if ( ! function_exists ( 'sldr_admin_head' ) ) {
 					'wp_media_button'			=> __( 'Insert', 'slider-bws' ),
 					'no_items'					=> __( 'No images found', 'slider-bws' )
 				)
-			);			
+			);
 
 			bws_enqueue_settings_scripts();
 		} elseif ( isset( $_GET['page'] ) && $_GET['page'] == 'slider-settings.php' ) {
@@ -2023,3 +2031,5 @@ add_action( 'wp_ajax_sldr_add_from_media', 'sldr_add_from_media' );
 add_filter( 'bws_shortcode_button_content', 'sldr_shortcode_button_content' );
 
 add_shortcode( 'print_sldr', 'sldr_shortcode' );
+
+add_filter( 'widget_text', 'do_shortcode' );

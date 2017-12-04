@@ -74,7 +74,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 				$slider_request_options['lazy_load']			= ( isset( $_POST['sldr_lazy_load'] ) ) ? true : false;
 				/* Set slide auto height */
 				$slider_request_options['auto_height']			= ( isset( $_POST['sldr_auto_height'] ) ) ? true : false;
-				
+
 				$this->options = array_merge( $this->options, $slider_request_options );
 
 				update_option( 'sldr_options', $this->options );
@@ -124,7 +124,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 						<td>
 							<label>
 								<input type="checkbox" name="sldr_lazy_load" value="1" <?php checked( 1, $this->options['lazy_load'] ); ?> /> 
-								<span class="bws_info"><?php _e( 'Enable to use lazy load for images (recommended for long pages). Images outside of viewport are not loaded until user scrolls to them.', 'slider-bws' ); ?></span>
+								<span class="bws_info"><?php _e( 'Enable to delay images loading (recommend for sliders with lots of slides). Images will not be loaded until they are in outside of viewport.', 'slider-bws' ); ?></span>
 							</label>
 						</td>
 					</tr>
@@ -133,7 +133,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 						<td>
 							<label>
 								<input type="checkbox" name="sldr_auto_height" value="1" <?php checked( 1, $this->options['auto_height'] ); ?> /> 
-								<span class="bws_info"><?php _e( 'Enable to change slider height automatically (according to the highest slide).', 'slider-bws' ); ?></span>
+								<span class="bws_info"><?php _e( 'Enable to change slider height automatically (according to the hight of the slide).', 'slider-bws' ); ?></span>
 							</label>
 						</td>
 					</tr>

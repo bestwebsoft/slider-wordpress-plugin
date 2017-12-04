@@ -50,13 +50,7 @@
 </ul>
 <p>Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send <a href="https://codex.wordpress.org/Translating_WordPress" rel="nofollow">the text of PO and MO files</a> to <a href="https://support.bestwebsoft.com/hc/en-us/requests/new" rel="nofollow">BestWebSoft</a> and we&#8217;ll add it to the plugin. You can download the latest version of the program for work with PO and MO <a href="https://www.poedit.net/download.php" rel="nofollow">files Poedit</a>.</p>
 <h4>Recommended Plugins</h4>
-<p>The author of the Slider also recommends the following plugins:</p>
 <ul>
-<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/gallery/?k=fe81f5feb5552cd2971f60d36e83c40f" rel="nofollow">Gallery</a> &#8211; Add beautiful galleries, albums &amp; images to your WordPress website in a few clicks.</li>
-</ul>
-<h3>Upgrade Notice ==​</h3>
-<h4>V​1.0.0​</h4>
-<ul>
-<li>Plugin released.</li>
 </ul>

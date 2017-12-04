@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Slider\n"
-"POT-Creation-Date: 2017-05-16 12:15+0300\n"
-"PO-Revision-Date: 2017-05-16 12:15+0300\n"
+"POT-Creation-Date: 2017-11-14 13:02+0200\n"
+"PO-Revision-Date: 2017-11-14 13:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-sldr-settings.php:28 includes/class-sldr-settings.php:35
-#: slider-bws.php:1908 slider-bws.php:1926
+#: slider-bws.php:1918 slider-bws.php:1936
 msgid "Settings"
 msgstr "Настройки"
 
@@ -52,20 +52,20 @@ msgstr "Добавить медиафайл"
 
 #: includes/class-sldr-settings.php:117
 msgid "Slider Settings"
-msgstr "Настройки слайдера"
+msgstr "Настройки Slider"
 
 #: includes/class-sldr-settings.php:123
 msgid "Lazy Load"
-msgstr "Загрузка по требованию"
+msgstr "Отложенная загрузка"
 
 #: includes/class-sldr-settings.php:127
 msgid ""
-"Enable to use lazy load for images (recommended for long pages). Images "
-"outside of viewport are not loaded until user scrolls to them."
+"Enable to delay images loading (recommend for sliders with lots of slides). "
+"Images will not be loaded until they are in outside of viewport."
 msgstr ""
-"Разрешить использовать загрузку изображений по требованию (рекомендуется для "
-"длинных страниц). Изображения за пределами области просмотра не загружаются, "
-"пока пользователь не прокрутится к ним."
+"Включите, чтобы отложить загрузку изображений (рекомендуется для слайдеров с "
+"большим количеством слайдов). Изображения не загружаются, пока не попадают в "
+"область видимости."
 
 #: includes/class-sldr-settings.php:132
 msgid "Auto Height"
@@ -73,10 +73,10 @@ msgstr "Автоматическая высота"
 
 #: includes/class-sldr-settings.php:136
 msgid ""
-"Enable to change slider height automatically (according to the highest "
+"Enable to change slider height automatically (according to the hight of the "
 "slide)."
 msgstr ""
-"Включить автоматическую смену высоты слайдера (в соответствии с максимальной "
+"Включите, чтобы высота слайдера изменялась автоматически (в соответствии с "
 "высотой слайда)."
 
 #: includes/class-sldr-settings.php:142
@@ -85,11 +85,11 @@ msgstr "Автовоспроизведение"
 
 #: includes/class-sldr-settings.php:145
 msgid "Enable to turn autoplay on for the slideshow."
-msgstr "Включить автовоспроизведение слайд-шоу."
+msgstr "Включить автовоспроизведение для слайд-шоу."
 
 #: includes/class-sldr-settings.php:150
 msgid "Autoplay Timeout"
-msgstr "Задержка Автовоспроизведения"
+msgstr "Задержка автовоспроизведения"
 
 #: includes/class-sldr-settings.php:153
 msgid "ms"
@@ -97,11 +97,13 @@ msgstr "мс"
 
 #: includes/class-sldr-settings.php:158
 msgid "Autoplay Pause"
-msgstr "Пауза Автовоспроизведения"
+msgstr "Пауза автовоспроизведения"
 
 #: includes/class-sldr-settings.php:162
 msgid "Enable to pause autoplay on mouse hover."
-msgstr "Включить паузу автовоспроизведения при наведении указателем мыши."
+msgstr ""
+"Включите паузу, чтобы остановить автовоспроизведение при наведении "
+"указателем мыши."
 
 #: includes/class-sldr-settings.php:167
 msgid "Loop"
@@ -125,7 +127,7 @@ msgstr "Точки"
 
 #: includes/class-sldr-settings.php:192
 msgid "Number of Visible Images per Slide"
-msgstr "Количество видимых изображений на слайде"
+msgstr "Количество видимых изображений в одном слайде"
 
 #: includes/class-sldr-settings.php:196
 msgid "Number of Images which are displayed simultaneously on a single slide."
@@ -144,19 +146,19 @@ msgstr "Добавить новый"
 msgid "Add New"
 msgstr "Добавить новый"
 
-#: slider-bws.php:38 slider-bws.php:1166 slider-bws.php:1239
+#: slider-bws.php:38 slider-bws.php:1166 slider-bws.php:1238
 msgid "Slider Categories"
 msgstr "Рубрики слайдеров"
 
-#: slider-bws.php:39 slider-bws.php:1357
+#: slider-bws.php:39 slider-bws.php:1355
 msgid "Slider Global Settings"
-msgstr "Общие Настройки Слайдера"
+msgstr "Общие настройки Slider"
 
 #: slider-bws.php:39
 msgid "Global Settings"
-msgstr "Общие Настройки"
+msgstr "Общие настройки"
 
-#: slider-bws.php:292 slider-bws.php:1485
+#: slider-bws.php:292 slider-bws.php:1471
 msgid "slider"
 msgstr "слайдер"
 
@@ -184,7 +186,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: slider-bws.php:380 slider-bws.php:1479
+#: slider-bws.php:380 slider-bws.php:1478
 msgid "no title"
 msgstr "без названия"
 
@@ -220,7 +222,7 @@ msgstr "Все рубрики"
 msgid "Filter"
 msgstr "Фильтр"
 
-#: slider-bws.php:661 slider-bws.php:1225 slider-bws.php:1259
+#: slider-bws.php:661 slider-bws.php:1225 slider-bws.php:1258
 msgid "Name"
 msgstr "Название"
 
@@ -316,7 +318,7 @@ msgstr "Создать новый слайдер"
 msgid "Enter title here"
 msgstr "Введите заголовок"
 
-#: slider-bws.php:1165 slider-bws.php:1301
+#: slider-bws.php:1165 slider-bws.php:1299
 msgid "Publish"
 msgstr "Опубликовать"
 
@@ -336,66 +338,62 @@ msgstr "Рубрика обновлена."
 msgid "Edit Category"
 msgstr "Редактировать рубрику"
 
-#: slider-bws.php:1228 slider-bws.php:1261
-msgid "The name is how it appears on your site."
-msgstr "Название определяет, как элемент будет отображаться на вашем сайте."
-
-#: slider-bws.php:1233 slider-bws.php:1301
+#: slider-bws.php:1232 slider-bws.php:1299
 msgid "Update"
 msgstr "Обновить"
 
-#: slider-bws.php:1249
+#: slider-bws.php:1248
 msgid "Search Slider Categories"
 msgstr "Поиск рубрик слайдеров"
 
-#: slider-bws.php:1256
+#: slider-bws.php:1255
 msgid "Add New Slider Category"
 msgstr "Добавить новую рубрику слайдера"
 
-#: slider-bws.php:1264 slider-bws.php:1344
+#: slider-bws.php:1262 slider-bws.php:1342
 msgid "Add New Category"
 msgstr "Добавить новую рубрику"
 
-#: slider-bws.php:1287
+#: slider-bws.php:1285
 msgid ""
 "Add a slider to your posts, pages, custom post types or widgets by using the "
 "following shortcode:"
 msgstr ""
-"Добавить слайдер на ваши записи, страницы, пользовательские типы записей или "
-"виджеты с помощью данного шорткода:"
+"Добавляйте слайдер на ваши записи, страницы, пользовательские типы записей "
+"или виджеты с помощью данного шорткода:"
 
-#: slider-bws.php:1339
+#: slider-bws.php:1337
 msgid "No Slider Category Set"
 msgstr "Рубрики слайдера не заданы"
 
-#: slider-bws.php:1397
+#: slider-bws.php:1395
 msgid "Warning"
 msgstr "Внимание"
 
-#: slider-bws.php:1397
+#: slider-bws.php:1395
 msgid ""
 "You can add only images or video (in format: MP4, WebM or Ogg) to the slider."
 msgstr ""
 "В слайдер можно добавлять только изображения или видео (в формате: MP4, WebM "
 "или Ogg)."
 
-#: slider-bws.php:1487
+#: slider-bws.php:1485
 msgid "Sorry, no slider found."
 msgstr "Извините, не найдено ни одного слайдера."
 
-#: slider-bws.php:1504
+#: slider-bws.php:1494
 msgid "slider category"
 msgstr "рубрика слайдера"
 
-#: slider-bws.php:1506
+#: slider-bws.php:1505
 msgid "Sorry, no sliders categories found."
 msgstr "Извините, рубрики слайдера не найдены."
 
-#: slider-bws.php:1796
+#: slider-bws.php:1804
 msgid "Sorry, nothing found."
 msgstr "Извините, ничего не найдено."
 
-#: slider-bws.php:1826
+#: slider-bws.php:1836
 msgid ""
 "You are about to remove these items from this slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -403,7 +401,7 @@ msgstr ""
 "Вы собираетесь удалить эти изображения из этого слайдера.\n"
 " «Отмена» — оставить, «ОК» — удалить."
 
-#: slider-bws.php:1827
+#: slider-bws.php:1837
 msgid ""
 "You are about to remove this item from the slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -411,33 +409,65 @@ msgstr ""
 "Вы собираетесь удалить это изображение из этого слайдера.\n"
 " «Отмена» — оставить, «ОК» — удалить."
 
-#: slider-bws.php:1828
+#: slider-bws.php:1838
 msgid "Insert Media"
 msgstr "Добавить медиафайл"
 
-#: slider-bws.php:1829
+#: slider-bws.php:1839
 msgid "Insert"
 msgstr "Добавить"
 
-#: slider-bws.php:1830
+#: slider-bws.php:1840
 msgid "No images found"
 msgstr "Изображения не заданы"
 
-#: slider-bws.php:1869
+#: slider-bws.php:1879
 msgid "Category per page"
 msgstr "Рубрик на странице"
 
-#: slider-bws.php:1881
+#: slider-bws.php:1891
 msgid "Sliders per page"
 msgstr "Слайдеров на странице"
 
-#: slider-bws.php:1909
+#: slider-bws.php:1919
 msgid "FAQ"
 msgstr "Частые вопросы"
 
-#: slider-bws.php:1910
+#: slider-bws.php:1920
 msgid "Support"
 msgstr "Тех.поддержка"
+
+# loading images = images loading
+# +
+#  Images do not load until they are in outside of viewport. = Images will not be loaded
+#, fuzzy
+#~ msgid ""
+#~ "Enable to delay loading images (recommend for sliders with lots of "
+#~ "slides). Images do not load until they are in outside of viewport."
+#~ msgstr ""
+#~ "Включите, чтобы отложить загрузку изображений (рекомендуется для "
+#~ "слайдеров с большим количеством слайдов). Изображения не загружаются, "
+#~ "пока не попадают в область видимости."
+
+# вообще непонятно что это
+#, fuzzy
+#~ msgid "The name is how it appears on your site."
+#~ msgstr "Название определяет, как элемент будет отображаться на вашем сайте."
+
+#~ msgid ""
+#~ "Enable to use lazy load for images (recommended for long pages). Images "
+#~ "outside of viewport are not loaded until user scrolls to them."
+#~ msgstr ""
+#~ "Включите, чтобы отложить загрузку изображений (рекомендуется для "
+#~ "слайдеров с большим количеством слайдов). Изображения не загружаются, "
+#~ "пока не попадают в область видимости."
+
+#~ msgid ""
+#~ "Enable to change slider height automatically (according to the highest "
+#~ "slide)."
+#~ msgstr ""
+#~ "Включите, чтобы высота слайдера изменялась автоматически (в соответствии "
+#~ "с высотой слайда)."
 
 #~ msgid "Enable to autoplay slideshow."
 #~ msgstr "Включить автовоспроизведение слайд-шоу."

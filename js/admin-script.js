@@ -183,7 +183,6 @@ function sldr_setError( msg ) {
 	});
 })(jQuery);
 
-
 /* Create notice on a gallery page */
 function sldr_notice_view( data_id ) {
 	(function( $ ) {
