@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
 Requires at least: 3.9
-Tested up to: 4.9.1
-Stable tag: 1.0.1
+Tested up to: 4.9.8
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,6 +42,11 @@ Create beautiful slider that fits all your needs!
 * Multilingual and RTL ready
 
 If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](https://support.bestwebsoft.com/hc/en-us/requests/new)
+
+= Documentation & Videos =
+
+* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+* [[Doc] How to Use](https://docs.google.com/document/d/1liDLFCg2T-VODcpvR7cYeNBKSmHcQCG6jA_0fawSkfw/)
 
 = Help & Support =
 
@@ -100,8 +105,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. Edit Slider page.
 3. Edit Slider Image Info.
 4. Slider Global Settings page.
+5. Slider Separate Settings page.
 
 == Changelog ==
+
+= V1.0.2 - 26.11.2018 =
+* Update : The autoplay timeout option has been set to seconds.
+* Bugfix : The bug with the shortcode has been fixed.
 
 = V1.0.1 - 04.12.2017 =
 * Bug with shortcodes in WordPress Text Widget has been fixed.
@@ -110,6 +120,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.0.2 =
+* Functionality improved.
+* Bugs fixed.
 
 = V1.0.1 =
 * Bugs fixed.

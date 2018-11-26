@@ -49,7 +49,7 @@ function sldr_setError( msg ) {
 				});
 
 				var self = this; /* Needed to retrieve our variable in the anonymous function below */
-				this.window.on( 'select', function() {					
+				this.window.on( 'select', function() {
 					var all = self.window.state().get( 'selection' ).toJSON();
 					all.forEach( function( item, i, arr ) {
 						$.ajax({
@@ -60,13 +60,13 @@ function sldr_setError( msg ) {
 								$( '#sldr-attachments' ).prepend( result );
 								$( '#sldr-attachments li:first-child' ).addClass( 'success' );
 								$( '.sldr-media-bulk-select-button' ).show();
-								if ( ! $( '#sldr-attachments' ).data( 'ui-sortable' ) ) {										
+								if ( ! $( '#sldr-attachments' ).data( 'ui-sortable' ) ) {
 									sldr_add_sortable();
 								}
 							}
 						});
 						$('<input type="hidden" name="sldr_new_image[]" id="sldr_new_image" value="' + item.id + '" />').appendTo( '#hidden' );
-					});					
+					});
 				});
 			}
 
@@ -131,7 +131,7 @@ function sldr_setError( msg ) {
 		});
 
 		$( document ).on( 'click', '.sldr-media-actions-delete', function() {
-			if ( window.confirm( sldr_vars.warnSingleDelete ) ) {			
+			if ( window.confirm( sldr_vars.warnSingleDelete ) ) {
 				var attachment_id = $( this ).parent().find( '.sldr_attachment_id' ).val(),
 					slider_id = $( this ).parent().find( '.sldr_slider_id' ).val();
 
@@ -173,7 +173,7 @@ function sldr_setError( msg ) {
 								}
 							}
 							$( '.sldr-media-spinner' ).css( 'display', 'none' );
-							$( '.attachments' ).removeAttr( 'disabled' );							
+							$( '.attachments' ).removeAttr( 'disabled' );
 						}
 					});
 				}

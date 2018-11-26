@@ -6,12 +6,12 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.1
+Version: 1.0.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2017 BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2018 BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -62,8 +62,10 @@ if ( ! function_exists( 'sldr_init' ) ) {
 
 		/* Get plugin data */
 		if ( ! $sldr_plugin_info ) {
-			if ( ! function_exists( 'get_plugin_data' ) )
+			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
+
 			$sldr_plugin_info = get_plugin_data( __FILE__ );
 		};
 
@@ -82,11 +84,12 @@ if ( ! function_exists ( 'sldr_admin_init' ) ) {
 		global $bws_plugin_info, $sldr_plugin_info, $bws_shortcode_list;
 		
 		/* Add variable for bws_menu. */
-		if ( empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array(
 				'id' 		=> '650',
 				'version' 	=> $sldr_plugin_info['Version']
 			);
+		}
 		/* Add slider to global $bws_shortcode_list  */
 		$bws_shortcode_list['sldr'] = array(
 			'name' 			=> 'Slider',
@@ -138,8 +141,9 @@ if ( ! function_exists( 'sldr_settings' ) ) {
 			$update_option = true;
 		}
 
-		if ( isset( $update_option ) )
+		if ( isset( $update_option ) ) {
 			update_option( 'sldr_options', $sldr_options );
+		}
 	}
 }
 
@@ -167,7 +171,8 @@ if ( ! function_exists( 'sldr_get_options_default' ) ) {
 			'lazy_load'					=> false,
 			'auto_height'				=> '1',
 			'order_by'					=> 'meta_value_num',
-			'order'						=> 'ASC'
+			'order'						=> 'ASC',
+			'bws_booking'               => 0
 		);
 		return $option_defaults;
 	}
@@ -184,7 +189,7 @@ if ( ! function_exists( 'sldr_plugin_activate' ) ) {
 			/* Get all blog ids */
 			$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
 			foreach ( $blogids as $blog_id ) {
-				switch_to_blog( $blog_id );				
+				switch_to_blog( $blog_id );
 				register_uninstall_hook( __FILE__, 'sldr_plugin_uninstall' );
 				restore_current_blog();
 			}
@@ -258,7 +263,7 @@ if ( ! function_exists( 'sldr_edit_attachment_join' ) ) {
 	function sldr_edit_attachment_join( $join_paged_statement ) {
 		global $wpdb;
 
-		$join_paged_statement = "LEFT JOIN `" . $wpdb->prefix . "sldr_slide` ON `" . $wpdb->prefix . "sldr_slide`.`attachment_id` = `" . $wpdb->prefix . "posts`.`ID`";			
+		$join_paged_statement = "LEFT JOIN `" . $wpdb->prefix . "sldr_slide` ON `" . $wpdb->prefix . "sldr_slide`.`attachment_id` = `" . $wpdb->prefix . "posts`.`ID`";
 
 		return $join_paged_statement;
 	}
@@ -433,7 +438,7 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 		<?php }
 
 		/* Add Dropdown categories for slider filter */
-		function extra_tablenav( $which ) {			
+		function extra_tablenav( $which ) {
 			if ( 'top' == $which ) {
 				global $wpdb;
 
@@ -448,7 +453,7 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 							echo '<option value="' . $slider_category_value['category_id'] . '"' . $selected . '>' . $slider_category_value['title'] . '</option>';
 						} ?>
 					</select>
-					<input name="sldr_filter_action" type="submit" class="button" value="<?php _e( 'Filter', 'slider-bws' ); ?>" />				
+					<input name="sldr_filter_action" type="submit" class="button" value="<?php _e( 'Filter', 'slider-bws' ); ?>" />
 				</div>
 			<?php }
 		}
@@ -511,7 +516,7 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 			$current_page 		= $this->get_pagenum();
 
 			/* Display selected category  */
-			$search = ( isset( $_POST['s'] ) ) ? '%' . stripslashes( esc_html( $_POST['s'] ) ) . '%' : '%%';				
+			$search = ( isset( $_POST['s'] ) ) ? '%' . stripslashes( esc_html( $_POST['s'] ) ) . '%' : '%%';
 
 			if ( ! empty( $_POST['sldr_cat_select'] ) ) {
 
@@ -605,7 +610,7 @@ if ( ! class_exists( 'Sldr_Category_List_Table' ) ) {
 			switch ( $column_name ) {
 				case 'count':
 					/* Count items with current category */
-					$sliders_with_current_category_count = intval( $wpdb->get_var( "SELECT COUNT( category_id ) FROM `" . $wpdb->prefix . "sldr_relation` WHERE `category_id` = '" . $item['category_id'] . "'" ) );				
+					$sliders_with_current_category_count = intval( $wpdb->get_var( "SELECT COUNT( category_id ) FROM `" . $wpdb->prefix . "sldr_relation` WHERE `category_id` = '" . $item['category_id'] . "'" ) );
 					echo $sliders_with_current_category_count;
 					break;
 				case 'shortcode':
@@ -746,7 +751,7 @@ if ( ! class_exists( 'Sldr_Category_List_Table' ) ) {
 			/* Pagination */
 			$per_page_query = get_user_meta( get_current_user_id(), $per_page_option['option'] );
 			$per_page_value = intval( implode( ',', $per_page_query ) );
-			$per_page 		= ! empty( $per_page_value ) ? $per_page_value : $per_page_option['default'];			
+			$per_page 		= ! empty( $per_page_value ) ? $per_page_value : $per_page_option['default'];
 			$paged 			= isset( $_REQUEST['paged'] ) ? max( 0, intval( $_REQUEST['paged'] * $per_page ) - $per_page ) : 0;
 
 			/* Search result for categories */
@@ -757,7 +762,7 @@ if ( ! class_exists( 'Sldr_Category_List_Table' ) ) {
 				$total_items = count( $wpdb->get_results( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "sldr_category` WHERE `title` LIKE %s", $cat_search_title ), ARRAY_A ) );
 			} else {
 				/* If search query is empty, display all table content */
-				$cat_search_title 	= '%%';				
+				$cat_search_title 	= '%%';
 				/* Will be used in pagination settings */
 				$total_items  = $wpdb->get_var( "SELECT COUNT( category_id ) FROM  `" . $wpdb->prefix . "sldr_category`" );
 			}
@@ -861,7 +866,7 @@ if ( ! class_exists( 'Sldr_Media_Table' ) ) {
 						</div>
 					</div>
 					<div class="sldr-media-attachment-details">
-						<?php echo $post->post_title; ?>						
+						<?php echo $post->post_title; ?>
 					</div>
 				</div>
 				<a href="#" class="sldr-media-actions-delete dashicons dashicons-trash" title="<?php _e( 'Remove Image from Slider', 'slider-bws' ); ?>"></a>
@@ -884,7 +889,7 @@ if ( ! class_exists( 'Sldr_Media_Table' ) ) {
 										<div><?php _e( 'Dimensions', 'slider-bws' ); ?>: <?php echo $attachment_metadata['width']; ?> &times; 	<?php echo $attachment_metadata['height']; ?></div>
 									<?php } ?>
 								</div>
-							</div>						
+							</div>
 							<label class="setting" data-setting="title">
 								<span class="name">
 									<?php _e( 'Title', 'slider-bws' ); ?>
@@ -894,7 +899,7 @@ if ( ! class_exists( 'Sldr_Media_Table' ) ) {
 							<label class="setting" data-setting="description">
 								<span class="name"><?php _e( 'Description', 'slider-bws' ); ?></span>
 								<textarea name="sldr_image_description[<?php echo $post->ID; ?>]"><?php echo $slide_attribute['description']; ?></textarea>
-							</label>							
+							</label>
 							<label class="setting" data-setting="alt">
 								<span class="name"><?php _e( 'Button URL', 'slider-bws' ); ?></span>
 								<input type="text" name="sldr_link_url[<?php echo $post->ID; ?>]" value="<?php echo $slide_attribute['url']; ?>" />
@@ -903,7 +908,7 @@ if ( ! class_exists( 'Sldr_Media_Table' ) ) {
 								<span class="name">
 									<?php _e( 'Button Text', 'slider-bws' ); ?>
 								</span>
-								<input type="text" name="sldr_button_text[<?php echo $post->ID; ?>]" value="<?php echo $slide_attribute['button']; ?>" />		
+								<input type="text" name="sldr_button_text[<?php echo $post->ID; ?>]" value="<?php echo $slide_attribute['button']; ?>" />
 							</label>
 							<div class="clear"></div>
 							<div class="sldr-media-attachment-actions">
@@ -980,10 +985,11 @@ if ( ! function_exists ( 'sldr_form_handler' ) ) {
 			/* Set autoplay */
 			$sldr_request_options['autoplay']				= ( isset( $_POST['sldr_autoplay'] ) ) ? true : false;
 			/* Autoplay timeout */
-			$sldr_request_options['autoplay_timeout'] 		= ( ! empty( $_POST['sldr_autoplay_timeout'] ) ) ? intval( $_POST['sldr_autoplay_timeout']  ) : '2000';
+			$sldr_request_options['autoplay_timeout'] 		= ( ! empty( $_POST['sldr_autoplay_timeout'] ) ) ? intval( $_POST['sldr_autoplay_timeout']  )*1000 : '2000';
 			/* Autoplay hover pause */
 			$sldr_request_options['autoplay_hover_pause']	= ( isset( $_POST['sldr_autoplay_hover_pause'] ) ) ? true : false;
 
+			$sldr_request_options = apply_filters( 'sldr_request_options', $sldr_request_options );
 			$sldr_options = serialize( $sldr_request_options );
 
 			/* Slider title */
@@ -1068,12 +1074,12 @@ if ( ! function_exists ( 'sldr_form_handler' ) ) {
 					$slider_attachment_title 	= htmlspecialchars( trim( wp_unslash( $slider_attachment_title ) ) );
 					$slider_attachment_description = esc_html( trim( wp_unslash( $_POST['sldr_image_description'][ $slider_attachment_id ] ) ) );
 					$slider_attachment_url = esc_url( trim( $_POST['sldr_link_url'][ $slider_attachment_id ] ) );
-					if ( filter_var( $slider_attachment_url, FILTER_VALIDATE_URL ) === FALSE )
+					if ( filter_var( $slider_attachment_url, FILTER_VALIDATE_URL ) === FALSE ) {
 						$slider_attachment_url = '';
-					$slider_attachment_button_text = esc_html( trim( wp_unslash( $_POST['sldr_button_text'][ $slider_attachment_id ] ) ) );
-					
-					/* Check: if data exist in DB, then update the data. If not exist, then insert the data */
-					$slide_id = $wpdb->get_var( $wpdb->prepare( "SELECT `slide_id` FROM `" . $wpdb->prefix . "sldr_slide` WHERE `attachment_id` = %d", $slider_attachment_id ) );
+					}
+                    			$slider_attachment_button_text = esc_html( trim( wp_unslash( $_POST['sldr_button_text'][ $slider_attachment_id ] ) ) );
+                    			/* Check: if data exist in DB, then update the data. If not exist, then insert the data */
+                    			$slide_id = $wpdb->get_var( $wpdb->prepare( "SELECT `slide_id` FROM `" . $wpdb->prefix . "sldr_slide` WHERE `attachment_id` = %d", $slider_attachment_id ) );
 
 					if ( ! empty( $slide_id ) ) {
 						$wpdb->update( $wpdb->prefix . 'sldr_slide',
@@ -1127,7 +1133,7 @@ if ( ! function_exists( 'sldr_add_new_render' ) ) {
 
 		$sldr_id = sldr_form_handler();
 		$plugin_basename = plugin_basename( __FILE__ );
-		$message = $error  = "";		
+		$message = $error  = "";
 
 		/* Add admin notice to slider menu. */
 		if ( isset( $_REQUEST['sldr_publish'] ) && check_admin_referer( $plugin_basename, 'sldr_nonce_form_name' ) ) {
@@ -1139,11 +1145,11 @@ if ( ! function_exists( 'sldr_add_new_render' ) ) {
 				echo '<h1>'. __( 'Edit Slider', 'slider-bws' ) . '<a class="page-title-action" href="' . admin_url( 'admin.php?page=slider-new.php' ) . '">' . __( 'Add New', 'slider-bws' ) . '</a></h1>';
 			} else {
 				echo '<h1>'. __( 'Add New Slider', 'slider-bws' ) . '</h1>';
-			} ?>					
+			} ?>
 			<form class="bws_form" method="POST" action="admin.php?page=slider-new.php&amp;sldr_id=<?php echo $sldr_id; ?>">
 				<div id="poststuff">
 					<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
-						<div id="post-body-content">							
+						<div id="post-body-content">
 							<div id="sldr_settings_message" class="notice is-dismissible updated below-h2 fade" <?php if ( "" == $message ) echo 'style="display:none"'; ?>>
 								<p><strong><?php echo $message; ?></strong></p>
 							</div>
@@ -1161,11 +1167,12 @@ if ( ! function_exists( 'sldr_add_new_render' ) ) {
 							<?php /* Used to save closed meta boxes and their order */
 							wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 							wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
-							/* Add metaboxes to media list page */				
+							/* Add metaboxes to media list page */
 							add_meta_box( 'sldr_submit', __( 'Publish', 'slider-bws' ), 'sldr_submit_metabox', 'sldr_metabox', 'side', 'high' );
 							add_meta_box( 'sldr_category', __( 'Slider Categories', 'slider-bws' ), 'sldr_category_metabox', 'sldr_metabox', 'side', 'default' );
-							if ( ! empty( $_REQUEST['sldr_id'] ) )
-								add_meta_box( 'sldr_shortcode', __( 'Slider Shortcode', 'slider-bws' ), 'sldr_shortcode_metabox', 'sldr_metabox', 'side', 'default' );
+							if ( ! empty( $_REQUEST['sldr_id'] ) ) {
+								add_meta_box('sldr_shortcode', __('Slider Shortcode', 'slider-bws'), 'sldr_shortcode_metabox', 'sldr_metabox', 'side', 'default');
+							}
 							do_meta_boxes( 'sldr_metabox', 'side', null ); ?>
 						</div>
 						<div class="clear"></div>
@@ -1283,7 +1290,7 @@ if ( ! function_exists( 'sldr_shortcode_metabox' ) ) {
 		} ?>
 		<div>
 			<?php _e( "Add a slider to your posts, pages, custom post types or widgets by using the following shortcode:", 'slider-bws' );
-			bws_shortcode_output( '[print_sldr id=' . $sldr_id . ']' ); ?>	
+			bws_shortcode_output( '[print_sldr id=' . $sldr_id . ']' ); ?>
 		</div>
 	<?php }
 }
@@ -1413,7 +1420,7 @@ if ( ! function_exists( 'sldr_delete_image' ) ) {
 		$delete_id_array	= isset( $_POST['delete_id_array'] ) ? $_POST['delete_id_array'] : "";
 		$slider_id			= $_POST['slider_id'];
 
-		if ( $action == 'sldr_delete_image' && ! empty( $delete_id_array ) && ! empty( $slider_id ) ) {
+		if ( 'sldr_delete_image' == $action && ! empty( $delete_id_array ) && ! empty( $slider_id ) ) {
 			$delete_ids = explode( ',', trim( $delete_id_array, ',' ) );
 
 			foreach ( $delete_ids as $delete_id ) {
@@ -1474,8 +1481,9 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 								/* Get slider title from DB */
 								$slider_title = $wpdb->get_var( $wpdb->prepare( "SELECT `title` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $slider_id ) );
 								/* If slider don't have title, display "no title" */
-								if ( empty( $slider_title ) )
-									$slider_title = '(' . __( 'no title', 'slider-bws' ) . ')';
+                                if ( empty( $slider_title ) ) {
+                                    $slider_title = '(' . __( 'no title', 'slider-bws' ) . ')';
+                                }
 								/* Get slider date from DB */
 								$slider_date = $wpdb->get_var( $wpdb->prepare( "SELECT `datetime` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $slider_id ) ); ?>
 								<option value="<?php echo $slider_id; ?>"><?php echo $slider_title; ?>(<?php echo $slider_date; ?>)</option>
@@ -1546,16 +1554,14 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 	function sldr_shortcode( $attr ) { 
 		global $wpdb, $sldr_options;
 
-		extract( shortcode_atts( array(
-			'id'		=>	'',
-			'cat_id'	=>	''
-			), $attr )
-		);
+		$shortcode_attributes = shortcode_atts( array( 'id' => '', 'cat_id' => '' ), $attr );
+		extract( $shortcode_attributes );
 
 		ob_start();
 
-		if ( empty( $sldr_options ) )
+		if ( empty( $sldr_options ) ) {
 			$sldr_options = get_option( 'sldr_options' );
+		}
 
 		/* Get slider ID by categories*/
 		/* Check: if this category exists in DB */
@@ -1567,14 +1573,14 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 
 		/* Get media ID for slider shortcode */
 		if ( ! empty( $id ) ) {
-			$slider_attachment_ids = $wpdb->get_col( $wpdb->prepare( 
+			$slider_attachment_ids = $wpdb->get_col( $wpdb->prepare(
 				"SELECT `" . $wpdb->prefix . "sldr_slide`.`attachment_id` 
 				FROM `" . $wpdb->prefix . "sldr_relation` INNER JOIN `" . $wpdb->prefix . "sldr_slide`
 				WHERE `" . $wpdb->prefix . "sldr_slide`.`attachment_id` = `" . $wpdb->prefix . "sldr_relation`.`attachment_id`
 					AND `" . $wpdb->prefix . "sldr_relation`.`attachment_id` IS NOT NULL 
 					AND `" . $wpdb->prefix . "sldr_relation`.`slider_id` = %d
 				ORDER BY `" . $wpdb->prefix . "sldr_slide`.`order` ASC",
-				$id  
+				$id
 			) );
 		}
 
@@ -1582,227 +1588,239 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 		$slider_single_setting = $wpdb->get_var( $wpdb->prepare( "SELECT `settings` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $id ) );
 		$slider_single_settings = unserialize( $slider_single_setting );
 
-		/* If this shortcode with slider ID */
-		if ( ! empty( $slider_attachment_ids ) ) { ?>
-			<script type="text/javascript">
-				( function($) {
-					$( document ).ready( function() {
-						var slider_single_settings = '<?php echo json_encode( $slider_single_settings ); ?>';
-						slider_single_settings 	= JSON.parse( slider_single_settings );
+		/* Wrapper for the Booking search form */
+		if ( is_plugin_active( 'car-rental/car-rental.php' ) || is_plugin_active( 'car-rental-pro/car-rental-pro.php' ) ) {
+			echo '<div class="sldr_bkng_wrapper">';
+		}
+			/* If this shortcode with slider ID */
+			if ( ! empty( $slider_attachment_ids ) ) { ?>
+				<script type="text/javascript">
+					( function($) {
+						$( document ).ready( function() {
+							var slider_single_settings = '<?php echo json_encode( $slider_single_settings ); ?>';
+							slider_single_settings 	= JSON.parse( slider_single_settings );
 
-						var slider_options 		= '<?php echo json_encode( $sldr_options ); ?>';
-						slider_options 			= JSON.parse( slider_options );
+							var slider_options 		= '<?php echo json_encode( $sldr_options ); ?>';
+							slider_options 			= JSON.parse( slider_options );
 
-						var id = <?php echo json_encode( $id ); ?>;
+							var id = <?php echo json_encode( $id ); ?>;
 
-						if ( $( 'body' ).hasClass( 'rtl' ) ) {
-							$( '.sldr_carousel_' + id  ).owlCarousel( {
-								loop: 				slider_single_settings.loop,
-								nav: 				slider_single_settings.nav,
-								dots: 				slider_single_settings.dots,
-								items: 				slider_single_settings.items,
-								smartSpeed: 		450,
-								autoplay: 			slider_single_settings.autoplay,
-								autoplayTimeout: 	slider_single_settings.autoplay_timeout,
-								autoplayHoverPause: slider_single_settings.autoplay_hover_pause,
-								center: 			true,
-								lazyLoad: 			slider_options.lazy_load,
-								autoHeight: 		slider_options.auto_height,
-								navText:[
-													"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-													"<i class='dashicons dashicons-arrow-right-alt2'></i>"
-								],
-								rtl: true
-							} );
-						} else {
-							$( '.sldr_carousel_' + id  ).owlCarousel({
-								loop: 				slider_single_settings.loop,
-								nav: 				slider_single_settings.nav,
-								dots: 				slider_single_settings.dots,
-								items: 				slider_single_settings.items,
-								smartSpeed: 		450,
-								autoplay: 			slider_single_settings.autoplay,
-								autoplayTimeout: 	slider_single_settings.autoplay_timeout,
-								autoplayHoverPause: slider_single_settings.autoplay_hover_pause,
-								center: 			true,
-								lazyLoad: 			slider_options.lazy_load,
-								autoHeight: 		slider_options.auto_height,
-								navText:[
-													"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-													"<i class='dashicons dashicons-arrow-right-alt2'></i>"
-								]
-							});
-						}
-					});
-				}) (jQuery);
-			</script>
-			<?php /* Display images and images attributes from slider. */
-			echo '<div class="sldr_wrapper"><div class="owl-carousel owl-theme sldr_carousel_' . $id . '">';
+							if ( $( 'body' ).hasClass( 'rtl' ) ) {
+								$( '.sldr_carousel_' + id  ).owlCarousel( {
+									loop: 				slider_single_settings.loop,
+									nav: 				slider_single_settings.nav,
+									dots: 				slider_single_settings.dots,
+									items: 				slider_single_settings.items,
+									smartSpeed: 		450,
+									autoplay: 			slider_single_settings.autoplay,
+									autoplayTimeout: 	slider_single_settings.autoplay_timeout,
+									autoplayHoverPause: slider_single_settings.autoplay_hover_pause,
+									center: 			true,
+									lazyLoad: 			slider_options.lazy_load,
+									autoHeight: 		slider_options.auto_height,
+									navText:[
+														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
+														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+									],
+									rtl: true
+								} );
+							} else {
+								$( '.sldr_carousel_' + id  ).owlCarousel({
+									loop: 				slider_single_settings.loop,
+									nav: 				slider_single_settings.nav,
+									dots: 				slider_single_settings.dots,
+									items: 				slider_single_settings.items,
+									smartSpeed: 		450,
+									autoplay: 			slider_single_settings.autoplay,
+									autoplayTimeout: 	slider_single_settings.autoplay_timeout,
+									autoplayHoverPause: slider_single_settings.autoplay_hover_pause,
+									center: 			true,
+									lazyLoad: 			slider_options.lazy_load,
+									autoHeight: 		slider_options.auto_height,
+									navText:[
+														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
+														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+									]
+								});
+							}
+						});
+					}) (jQuery);
+				</script>
+				<?php /* Display images and images attributes from slider. */
+				echo '<div class="sldr_wrapper"><div class="owl-carousel owl-theme sldr_carousel_' . $id . '">';
 
-				foreach ( $slider_attachment_ids as $slider_attachment_id ) {
-					/* Get slides properties */
-					$slide_attribute = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "sldr_slide` WHERE `attachment_id` = %d", $slider_attachment_id ) );
-			
-					/* Slide title */
-					$slide_title 		= $slide_attribute->title;
-					/* Slide description */
-					$slide_description 	= $slide_attribute->description;
-					/* Slide url */
-					$slide_url 			= $slide_attribute->url;
-					/* Slide button text */
-					$slide_button_text 	= $slide_attribute->button;
-					/* Get image for media ID */
-					$slider_attachment	= wp_get_attachment_url( $slider_attachment_id, 'full' );
-
-					echo '<div class="sldr_textoverlay">';
-
-						if ( ! empty( $slide_title ) ) {
-							/* Display slides title if exist */
-							echo '<h2>' . $slide_title  . '</h2>';
-						}
-						if ( ! empty( $slide_description ) ) {
-							/* Display slides description if exist */
-							echo '<p>' . $slide_description . '</p>';
-						}
-						if ( ! empty( $slide_button_text ) && ! empty( $slide_url ) ) {
-							/* Display slides button if exist */
-							echo '<a href="' . $slide_url . '">' . $slide_button_text . '</a>';
-						}
-
-						if ( wp_attachment_is_image( $slider_attachment_id ) && $sldr_options['lazy_load'] ) {
-							/* If attachment is image and lazy load on */
-							echo '<img class="owl-lazy" data-src="' . $slider_attachment . '" />';
-						} elseif( wp_attachment_is_image( $slider_attachment_id ) ) {
-							/* If attachment is image */
-							echo '<img src="' . $slider_attachment . '" />';
-						} else {
-							/* Else attachment is video */
-							echo '<video src="' . $slider_attachment . '" controls></video>';
-						}
-
-					echo '</div>';
-				}
-			echo '</div></div>';
-
-		/* If this shortcode with slider category ID */
-		} elseif ( ! empty( $slider_categories_ids ) ) {
-
-			/* Get slider settings */
-			$slider_category_setting 	= $wpdb->get_var( $wpdb->prepare( "SELECT `settings` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $slider_categories_ids[0] ) ); /* Get options of first slider */
-			$slider_category_settings	= unserialize( $slider_category_setting ); ?>
-			<script type="text/javascript">
-				( function( $ ) {
-					$( document ).ready( function() {
-						var slider_options = '<?php echo json_encode( $sldr_options ); ?>';
-						slider_options = JSON.parse( slider_options );
-
-						var slider_category_settings = '<?php echo json_encode( $slider_category_settings ); ?>';
-						slider_category_settings = JSON.parse( slider_category_settings );
-
-						var cat_id = <?php echo json_encode( $cat_id ); ?>;
-
-						$( '.sldr_cat_carousel_'+ cat_id ).find( '.owl-item' );
-
-						if ( $( 'body' ).hasClass( 'rtl' ) ) {
-							$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
-								loop: 				slider_category_settings.loop,
-								nav: 				slider_category_settings.nav,
-								dots: 				slider_category_settings.dots,
-								items: 				slider_category_settings.items,
-								autoplay: 			slider_category_settings.autoplay,
-								autoplayTimeout: 	slider_category_settings.autoplay_timeout,
-								autoplayHoverPause: slider_category_settings.autoplay_hover_pause,
-								center: 			true,
-								smartSpeed:			450,
-								lazyLoad:			slider_options.lazy_load,
-								autoHeight: 		slider_options.auto_height,
-								navText:[
-													"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-													"<i class='dashicons dashicons-arrow-right-alt2'></i>"
-								],									
-								rtl: true
-							} );
-						} else {
-							$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
-								loop: 				slider_category_settings.loop,
-								nav: 				slider_category_settings.nav,
-								dots: 				slider_category_settings.dots,
-								items: 				slider_category_settings.items,
-								autoplay: 			slider_category_settings.autoplay,
-								autoplayTimeout: 	slider_category_settings.autoplay_timeout,
-								autoplayHoverPause: slider_category_settings.autoplay_hover_pause,
-								center: 			true,
-								smartSpeed:			450,
-								lazyLoad:			slider_options.lazy_load,
-								autoHeight: 		slider_options.auto_height,
-								navText:[
-													"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-													"<i class='dashicons dashicons-arrow-right-alt2'></i>"
-								]
-							} );
-						}
-					} );
-				} ) (jQuery);
-			</script>
-
-			<?php echo '<div class="sldr_wrapper"><div class="sldr_cat_carousel_' . $cat_id . ' owl-carousel owl-theme">';
-
-			foreach ( $slider_categories_ids as $slider_categories_id ) {
-
-				/* Get media ID for slider category shortcode */
-				if ( ! empty( $slider_categories_id ) ) {
-					$slider_attachment_ids 	= $wpdb->get_col( $wpdb->prepare( 
-						"SELECT `" . $wpdb->prefix . "sldr_slide`.`attachment_id` 
-						FROM `" . $wpdb->prefix . "sldr_relation` INNER JOIN `" . $wpdb->prefix . "sldr_slide`
-						WHERE `" . $wpdb->prefix . "sldr_slide`.`attachment_id` = `" . $wpdb->prefix . "sldr_relation`.`attachment_id`
-							AND `" . $wpdb->prefix . "sldr_relation`.`attachment_id` IS NOT NULL 
-							AND `" . $wpdb->prefix . "sldr_relation`.`slider_id` = %d
-						ORDER BY `" . $wpdb->prefix . "sldr_slide`.`order` ASC",
-						$slider_categories_id
-					) );
-				}
-
-				/* If slider have image */
-				if ( ! empty( $slider_attachment_ids  ) ) {
-					
 					foreach ( $slider_attachment_ids as $slider_attachment_id ) {
 						/* Get slides properties */
 						$slide_attribute = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "sldr_slide` WHERE `attachment_id` = %d", $slider_attachment_id ) );
+
+						/* Slide title */
+						$slide_title 		= $slide_attribute->title;
+						/* Slide description */
+						$slide_description 	= $slide_attribute->description;
+						/* Slide url */
+						$slide_url 			= $slide_attribute->url;
+						/* Slide button text */
+						$slide_button_text 	= $slide_attribute->button;
 						/* Get image for media ID */
-						$slider_attachment = wp_get_attachment_url( $slider_attachment_id, 'full' );
+						$slider_attachment	= wp_get_attachment_url( $slider_attachment_id, 'full' );
 
 						echo '<div class="sldr_textoverlay">';
-						if ( ! empty( $slide_attribute->title ) ) {
-							/* Display slides title if exist */
-							echo '<h2>' . $slide_attribute->title . '</h2>';
-						}
-						if ( ! empty( $slide_attribute->description ) ) {
-							/* Display slides description if exist */
-							echo '<p>' . $slide_attribute->description . '</p>';
-						}
-						if ( ! empty( $slide_attribute->button ) && ! empty( $slide_attribute->url ) ) {
-							/* Display slides button if exist */
-							echo '<a href="' . $slide_attribute->url . '">' . $slide_attribute->button . '</a>';
-						}
-						if ( wp_attachment_is_image( $slider_attachment_id ) && $sldr_options['lazy_load'] ) {
-							/* If attachment is image and lazy load on */
-							echo '<img class="owl-lazy" data-src="' . $slider_attachment . '" />';
-						} elseif( wp_attachment_is_image( $slider_attachment_id ) ) {
-							/* If attachment is image */
-							echo '<img src="' . $slider_attachment . '" />';
-						} else {
-							/* Else attachment is video */
-							echo '<video src="' . $slider_attachment . '" controls></video>';
-						}
+
+							if ( ! empty( $slide_title ) ) {
+								/* Display slides title if exist */
+								echo '<h2>' . $slide_title  . '</h2>';
+							}
+							if ( ! empty( $slide_description ) ) {
+								/* Display slides description if exist */
+								echo '<p>' . $slide_description . '</p>';
+							}
+							if ( ! empty( $slide_button_text ) && ! empty( $slide_url ) ) {
+								/* Display slides button if exist */
+								echo '<a href="' . $slide_url . '">' . $slide_button_text . '</a>';
+							}
+
+							if ( wp_attachment_is_image( $slider_attachment_id ) && $sldr_options['lazy_load'] ) {
+								/* If attachment is image and lazy load on */
+								echo '<img class="owl-lazy" data-src="' . $slider_attachment . '" />';
+							} elseif( wp_attachment_is_image( $slider_attachment_id ) ) {
+								/* If attachment is image */
+								echo '<img src="' . $slider_attachment . '" />';
+							} else {
+								/* Else attachment is video */
+								echo '<video src="' . $slider_attachment . '" controls></video>';
+							}
+
 						echo '</div>';
 					}
+				echo '</div></div>';
+
+			/* If this shortcode with slider category ID */
+			} elseif ( ! empty( $slider_categories_ids ) ) {
+
+				/* Get slider settings */
+				$slider_category_setting 	= $wpdb->get_var( $wpdb->prepare( "SELECT `settings` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $slider_categories_ids[0] ) ); /* Get options of first slider */
+				$slider_category_settings	= unserialize( $slider_category_setting ); ?>
+				<script type="text/javascript">
+					( function( $ ) {
+						$( document ).ready( function() {
+							var slider_options = '<?php echo json_encode( $sldr_options ); ?>';
+							slider_options = JSON.parse( slider_options );
+
+							var slider_category_settings = '<?php echo json_encode( $slider_category_settings ); ?>';
+							slider_category_settings = JSON.parse( slider_category_settings );
+
+							var cat_id = <?php echo json_encode( $cat_id ); ?>;
+
+							$( '.sldr_cat_carousel_'+ cat_id ).find( '.owl-item' );
+
+							if ( $( 'body' ).hasClass( 'rtl' ) ) {
+								$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
+									loop: 				slider_category_settings.loop,
+									nav: 				slider_category_settings.nav,
+									dots: 				slider_category_settings.dots,
+									items: 				slider_category_settings.items,
+									autoplay: 			slider_category_settings.autoplay,
+									autoplayTimeout: 	slider_category_settings.autoplay_timeout,
+									autoplayHoverPause: slider_category_settings.autoplay_hover_pause,
+									center: 			true,
+									smartSpeed:			450,
+									lazyLoad:			slider_options.lazy_load,
+									autoHeight: 		slider_options.auto_height,
+									navText:[
+														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
+														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+									],
+									rtl: true
+								} );
+							} else {
+								$( '.sldr_cat_carousel_' + cat_id ).owlCarousel( {
+									loop: 				slider_category_settings.loop,
+									nav: 				slider_category_settings.nav,
+									dots: 				slider_category_settings.dots,
+									items: 				slider_category_settings.items,
+									autoplay: 			slider_category_settings.autoplay,
+									autoplayTimeout: 	slider_category_settings.autoplay_timeout,
+									autoplayHoverPause: slider_category_settings.autoplay_hover_pause,
+									center: 			true,
+									smartSpeed:			450,
+									lazyLoad:			slider_options.lazy_load,
+									autoHeight: 		slider_options.auto_height,
+									navText:[
+														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
+														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+									]
+								} );
+							}
+						} );
+					} ) (jQuery);
+				</script>
+
+				<?php echo '<div class="sldr_wrapper"><div class="sldr_cat_carousel_' . $cat_id . ' owl-carousel owl-theme">';
+
+				foreach ( $slider_categories_ids as $slider_categories_id ) {
+
+					/* Get media ID for slider category shortcode */
+					if ( ! empty( $slider_categories_id ) ) {
+						$slider_attachment_ids 	= $wpdb->get_col( $wpdb->prepare( 
+							"SELECT `" . $wpdb->prefix . "sldr_slide`.`attachment_id` 
+							FROM `" . $wpdb->prefix . "sldr_relation` INNER JOIN `" . $wpdb->prefix . "sldr_slide`
+							WHERE `" . $wpdb->prefix . "sldr_slide`.`attachment_id` = `" . $wpdb->prefix . "sldr_relation`.`attachment_id`
+								AND `" . $wpdb->prefix . "sldr_relation`.`attachment_id` IS NOT NULL 
+								AND `" . $wpdb->prefix . "sldr_relation`.`slider_id` = %d
+							ORDER BY `" . $wpdb->prefix . "sldr_slide`.`order` ASC",
+							$slider_categories_id
+						) );
+					}
+
+					/* If slider have image */
+					if ( ! empty( $slider_attachment_ids  ) ) {
+						
+						foreach ( $slider_attachment_ids as $slider_attachment_id ) {
+							/* Get slides properties */
+							$slide_attribute = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM `" . $wpdb->prefix . "sldr_slide` WHERE `attachment_id` = %d", $slider_attachment_id ) );
+							/* Get image for media ID */
+							$slider_attachment = wp_get_attachment_url( $slider_attachment_id, 'full' );
+
+							echo '<div class="sldr_textoverlay">';
+							if ( ! empty( $slide_attribute->title ) ) {
+								/* Display slides title if exist */
+								echo '<h2>' . $slide_attribute->title . '</h2>';
+							}
+							if ( ! empty( $slide_attribute->description ) ) {
+								/* Display slides description if exist */
+								echo '<p>' . $slide_attribute->description . '</p>';
+							}
+							if ( ! empty( $slide_attribute->button ) && ! empty( $slide_attribute->url ) ) {
+								/* Display slides button if exist */
+								echo '<a href="' . $slide_attribute->url . '">' . $slide_attribute->button . '</a>';
+							}
+							if ( wp_attachment_is_image( $slider_attachment_id ) && $sldr_options['lazy_load'] ) {
+								/* If attachment is image and lazy load on */
+								echo '<img class="owl-lazy" data-src="' . $slider_attachment . '" />';
+							} elseif( wp_attachment_is_image( $slider_attachment_id ) ) {
+								/* If attachment is image */
+								echo '<img src="' . $slider_attachment . '" />';
+							} else {
+								/* Else attachment is video */
+								echo '<video src="' . $slider_attachment . '" controls></video>';
+							}
+							echo '</div>';
+						}
+					}
 				}
+				echo '</div></div>';
+			/* If nothing found. */
+			} else {
+				echo '<div class="sldr_wrapper"><p class="not_found">' . __( 'Sorry, nothing found.', 'slider-bws' ) . '</p></div>';
 			}
-			echo '</div></div>';
-		/* If nothing found. */
-		} else {
-			echo '<div class="sldr_wrapper"><p class="not_found">' . __( 'Sorry, nothing found.', 'slider-bws' ) . '</p></div>';
+			$settings = ! empty( $slider_single_settings ) ? $slider_single_settings : ( ! empty( $slider_category_setting ) ? $slider_category_setting : false );
+			do_action( 'sldr_after_content', $shortcode_attributes, maybe_unserialize( $settings ) );
+
+		if ( is_plugin_active( 'car-rental/car-rental.php' ) || is_plugin_active( 'car-rental-pro/car-rental-pro.php' ) ) {
+			echo '</div>';
+			/* end of .sldr_bkng_wrapper */
 		}
+
 		$slider_output = ob_get_clean();
 		return $slider_output;
 	}
@@ -1823,7 +1841,7 @@ if ( ! function_exists ( 'sldr_admin_head' ) ) {
 			
 			wp_enqueue_script( 'jquery-ui-sortable' );
 
-			wp_enqueue_media();			
+			wp_enqueue_media();
 			add_thickbox();
 			
 			wp_enqueue_script( 'sldr_script', plugins_url( 'js/admin-script.js', __FILE__ ), array( 'jquery' ) );
@@ -1854,7 +1872,7 @@ if ( ! function_exists ( 'sldr_admin_head' ) ) {
  * @return void
  */
 if ( ! function_exists( 'sldr_register_scripts' ) ) {
-	function sldr_register_scripts() {				
+	function sldr_register_scripts() {
 		/* Owl carousel style */
 		wp_enqueue_style( 'owl.carousel.css', plugins_url( '/css/owl.carousel.css', __FILE__ ) );
 		wp_enqueue_style( 'owl.theme.default.css', plugins_url( '/css/owl.theme.default.css', __FILE__ ) );
@@ -1866,6 +1884,8 @@ if ( ! function_exists( 'sldr_register_scripts' ) ) {
 		wp_enqueue_script( 'jquery' );
 		/* Slider script */
 		wp_enqueue_script( 'owl.carousel.js', plugins_url( '/js/owl.carousel.js', __FILE__ ) );
+		/* Frontend script */
+		wp_enqueue_script( 'sldr_front_script', plugins_url( 'js/script.js', __FILE__ ) );
 	}
 }
 
@@ -1949,8 +1969,9 @@ if ( ! function_exists ( 'sldr_admin_notices' ) ) {
 
 		if ( 'plugins.php' == $hook_suffix || ( isset( $_GET['page'] ) && $_GET['page'] == 'slider-settings.php' ) ) {
 			if ( 'plugins.php' == $hook_suffix ) {
-				if ( isset( $sldr_options['first_install'] ) && strtotime( '-1 week' ) > $sldr_options['first_install'] )
+				if ( isset( $sldr_options['first_install'] ) && strtotime( '-1 week' ) > $sldr_options['first_install'] ) {
 					bws_plugin_banner_to_settings( $sldr_plugin_info, 'sldr_options', 'slider', 'admin.php?page=slider-settings.php', 'admin.php?page=slider-new.php' );
+				}
 			} else {
 				bws_plugin_suggest_feature_banner( $sldr_plugin_info, 'sldr_options', 'slider' );
 			}
@@ -1986,7 +2007,7 @@ if ( ! function_exists( 'sldr_plugin_uninstall' ) ) {
 			foreach ( $blogids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				$wpdb->query( "DROP TABLE IF EXISTS  `" . $wpdb->prefix . "sldr_slider`, `" . $wpdb->prefix . "sldr_slide`, `" . $wpdb->prefix . "sldr_relation`, `" . $wpdb->prefix . "sldr_category` " );
-				delete_option( 'sldr_options' );				
+				delete_option( 'sldr_options' );
 			}
 			switch_to_blog( $old_blog );
 		} else {

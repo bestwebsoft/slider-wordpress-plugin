@@ -54,7 +54,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 				'prefix' 			 => 'sldr',
 				'default_options' 	 => sldr_get_options_default(),
 				'options' 			 => $options,
-				'tabs' 				 => $tabs,				
+				'tabs' 				 => $tabs,
 				'wp_slug'			 => 'slider-bws'
 			) );
 		}
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 			$wp_gallery_media_table->prepare_items(); ?>
 			<h3 class="bws_tab_label"><?php _e( 'Slider Images', 'slider-bws' ); ?></h3>
 			<?php $this->help_phrase(); ?>
-			<hr>		
+			<hr>
 			<div>
 				<div class="error hide-if-js">
 					<p><?php _e( 'Adding images requires JavaScript.', 'slider-bws' ); ?></p>
@@ -150,7 +150,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 						<th><?php _e( 'Autoplay Timeout', 'slider-bws' ); ?></th>
 						<td>
 							<label>
-								<input type="number" name="sldr_autoplay_timeout" min="1000" max="10000" value="<?php echo $this->options["autoplay_timeout"]; ?>" /> <?php _e( 'ms', 'slider-bws' ); ?>
+								<input type="number" name="sldr_autoplay_timeout" min="1" max="1000" value="<?php echo $this->options["autoplay_timeout"]/1000; ?>" /> <?php _e( 'sec', 'slider-bws' ); ?>
 							</label>
 						</td>
 					</tr>
@@ -198,7 +198,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 						</td>
 					</tr>
 					
-				<?php } ?>	
+				<?php } ?>
 			</table>
 		<?php }
 	}

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Slider\n"
-"POT-Creation-Date: 2017-11-14 13:06+0200\n"
-"PO-Revision-Date: 2017-11-14 13:07+0200\n"
+"POT-Creation-Date: 2018-10-16 16:06+0300\n"
+"PO-Revision-Date: 2018-10-16 16:06+0300\n"
 "Last-Translator: \n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: uk_UA\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-sldr-settings.php:28 includes/class-sldr-settings.php:35
-#: slider-bws.php:1918 slider-bws.php:1936
+#: slider-bws.php:1939 slider-bws.php:1957
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -30,7 +30,7 @@ msgstr "Різне"
 msgid "Custom Code"
 msgstr "Користувацький код"
 
-#: includes/class-sldr-settings.php:34 slider-bws.php:411
+#: includes/class-sldr-settings.php:34 slider-bws.php:416
 msgid "Images"
 msgstr "Зображення"
 
@@ -92,8 +92,8 @@ msgid "Autoplay Timeout"
 msgstr "Затримка автоматичного програвання"
 
 #: includes/class-sldr-settings.php:153
-msgid "ms"
-msgstr "мс"
+msgid "sec"
+msgstr "сек"
 
 #: includes/class-sldr-settings.php:158
 msgid "Autoplay Pause"
@@ -139,15 +139,15 @@ msgstr "Слайдери"
 msgid "Add new"
 msgstr "Додати новий"
 
-#: slider-bws.php:37 slider-bws.php:1139
+#: slider-bws.php:37 slider-bws.php:1146
 msgid "Add New"
 msgstr "Додати новий"
 
-#: slider-bws.php:38 slider-bws.php:1166 slider-bws.php:1238
+#: slider-bws.php:38 slider-bws.php:1173 slider-bws.php:1246
 msgid "Slider Categories"
 msgstr "Категорії слайдера"
 
-#: slider-bws.php:39 slider-bws.php:1355
+#: slider-bws.php:39 slider-bws.php:1363
 msgid "Slider Global Settings"
 msgstr "Загальні налаштування Slider"
 
@@ -155,203 +155,203 @@ msgstr "Загальні налаштування Slider"
 msgid "Global Settings"
 msgstr "Загальні налаштування"
 
-#: slider-bws.php:292 slider-bws.php:1471
+#: slider-bws.php:297 slider-bws.php:1479
 msgid "slider"
 msgstr "слайдер"
 
-#: slider-bws.php:293
+#: slider-bws.php:298
 msgid "sliders"
 msgstr "слайдери"
 
-#: slider-bws.php:320
+#: slider-bws.php:325
 msgid "No Thumbnail Set."
 msgstr "Зменшене зображення не задане."
 
-#: slider-bws.php:330
+#: slider-bws.php:335
 msgid "No Images Set."
 msgstr "Зображення не задані."
 
-#: slider-bws.php:356
+#: slider-bws.php:361
 msgid "No Category Set."
 msgstr "Категорію не задано."
 
-#: slider-bws.php:376 slider-bws.php:630
+#: slider-bws.php:381 slider-bws.php:636
 msgid "Edit"
 msgstr "Редагувати"
 
-#: slider-bws.php:377 slider-bws.php:463 slider-bws.php:631 slider-bws.php:691
+#: slider-bws.php:382 slider-bws.php:468 slider-bws.php:637 slider-bws.php:697
 msgid "Delete"
 msgstr "Видалити"
 
-#: slider-bws.php:380 slider-bws.php:1478
+#: slider-bws.php:385 slider-bws.php:1486
 msgid "no title"
 msgstr "без назви"
 
-#: slider-bws.php:409
+#: slider-bws.php:414
 msgid "Thumbnail"
 msgstr "Зменшене зображення"
 
-#: slider-bws.php:410 slider-bws.php:890
+#: slider-bws.php:415 slider-bws.php:896
 msgid "Title"
 msgstr "Заголовок"
 
-#: slider-bws.php:412
+#: slider-bws.php:417
 msgid "Category"
 msgstr "Категорія"
 
-#: slider-bws.php:413 slider-bws.php:663
+#: slider-bws.php:418 slider-bws.php:669
 msgid "Shortcode"
 msgstr "Шорткод"
 
-#: slider-bws.php:414
+#: slider-bws.php:419
 msgid "Date"
 msgstr "Дата"
 
-#: slider-bws.php:420
+#: slider-bws.php:425
 msgid "No Sliders Found"
 msgstr "Слайдери не знайдено"
 
-#: slider-bws.php:445
+#: slider-bws.php:450
 msgid "All Categories"
 msgstr "Усі категорії"
 
-#: slider-bws.php:451
+#: slider-bws.php:456
 msgid "Filter"
 msgstr "Фільтр"
 
-#: slider-bws.php:661 slider-bws.php:1225 slider-bws.php:1258
+#: slider-bws.php:667 slider-bws.php:1233 slider-bws.php:1266
 msgid "Name"
 msgstr "Назва"
 
-#: slider-bws.php:662
+#: slider-bws.php:668
 msgid "Count"
 msgstr "Кількість"
 
-#: slider-bws.php:669
+#: slider-bws.php:675
 msgid "No Categories Found"
 msgstr "Не знайдено жодної категорії"
 
-#: slider-bws.php:795
+#: slider-bws.php:801
 msgid "No images found."
 msgstr "Зображення не знайдено."
 
-#: slider-bws.php:842
+#: slider-bws.php:848
 msgid "Bulk Select"
 msgstr "Гуртовий вибір"
 
-#: slider-bws.php:843
+#: slider-bws.php:849
 msgid "Cancel Selection"
 msgstr "Скасувати вибір"
 
-#: slider-bws.php:844
+#: slider-bws.php:850
 msgid "Delete Selected"
 msgstr "Видалити позначене"
 
-#: slider-bws.php:867
+#: slider-bws.php:873
 msgid "Remove Image from Slider"
 msgstr "Видалити зображення з слайдеру"
 
-#: slider-bws.php:870
+#: slider-bws.php:876
 msgid "Edit Image Info"
 msgstr "Редагувати інформацію зображення"
 
-#: slider-bws.php:871
+#: slider-bws.php:877
 msgid "Deselect"
 msgstr "Скасувати вибір"
 
-#: slider-bws.php:881
+#: slider-bws.php:887
 msgid "File name"
 msgstr "Назва файлу"
 
-#: slider-bws.php:882
+#: slider-bws.php:888
 msgid "File type"
 msgstr "Тип файлу"
 
-#: slider-bws.php:884
+#: slider-bws.php:890
 msgid "Dimensions"
 msgstr "Розміри"
 
-#: slider-bws.php:895
+#: slider-bws.php:901
 msgid "Description"
 msgstr "Опис"
 
-#: slider-bws.php:899
+#: slider-bws.php:905
 msgid "Button URL"
 msgstr "URL кнопки"
 
-#: slider-bws.php:904
+#: slider-bws.php:910
 msgid "Button Text"
 msgstr "Текст кнопки"
 
-#: slider-bws.php:910
+#: slider-bws.php:916
 msgid "Edit more details"
 msgstr "Редагувати деталі"
 
-#: slider-bws.php:912
+#: slider-bws.php:918
 msgid "Remove from Slider"
 msgstr "Видалити з слайдеру"
 
-#: slider-bws.php:936
+#: slider-bws.php:942
 msgid "Slider deleted."
 msgstr "Слайдер видалено."
 
-#: slider-bws.php:948
+#: slider-bws.php:954
 msgid "Search Sliders"
 msgstr "Пошук слайдерів"
 
-#: slider-bws.php:1134
+#: slider-bws.php:1141
 msgid "Slider updated."
 msgstr "Слайдер оновлено."
 
-#: slider-bws.php:1139
+#: slider-bws.php:1146
 msgid "Edit Slider"
 msgstr "Редагувати слайдер"
 
-#: slider-bws.php:1141
+#: slider-bws.php:1148
 msgid "Add New Slider"
 msgstr "Додати новий слайдер"
 
-#: slider-bws.php:1152
+#: slider-bws.php:1159
 msgid "Enter title here"
 msgstr "Введіть заголовок"
 
-#: slider-bws.php:1165 slider-bws.php:1299
+#: slider-bws.php:1172 slider-bws.php:1307
 msgid "Publish"
 msgstr "Опублікувати"
 
-#: slider-bws.php:1168
+#: slider-bws.php:1175
 msgid "Slider Shortcode"
 msgstr "Шорткод слайдера"
 
-#: slider-bws.php:1192
+#: slider-bws.php:1200
 msgid "Category deleted."
 msgstr "Категорія видалена."
 
-#: slider-bws.php:1212
+#: slider-bws.php:1220
 msgid "Category updated."
 msgstr "Категорія оновлена."
 
-#: slider-bws.php:1218
+#: slider-bws.php:1226
 msgid "Edit Category"
 msgstr "Редагувати категорію"
 
-#: slider-bws.php:1232 slider-bws.php:1299
+#: slider-bws.php:1240 slider-bws.php:1307
 msgid "Update"
 msgstr "Оновити"
 
-#: slider-bws.php:1248
+#: slider-bws.php:1256
 msgid "Search Slider Categories"
 msgstr "Пошук категорій слайдерів"
 
-#: slider-bws.php:1255
+#: slider-bws.php:1263
 msgid "Add New Slider Category"
 msgstr "Додати нову категорію слайдера"
 
-#: slider-bws.php:1262 slider-bws.php:1342
+#: slider-bws.php:1270 slider-bws.php:1350
 msgid "Add New Category"
 msgstr "Додати нову категорію"
 
-#: slider-bws.php:1285
+#: slider-bws.php:1293
 msgid ""
 "Add a slider to your posts, pages, custom post types or widgets by using the "
 "following shortcode:"
@@ -359,38 +359,38 @@ msgstr ""
 "Додавайте слайдер на ваші записи, сторінки або користувацькі типи записів за "
 "допомогою даного шорткода:"
 
-#: slider-bws.php:1337
+#: slider-bws.php:1345
 msgid "No Slider Category Set"
 msgstr "Категорії слайдера не задані"
 
-#: slider-bws.php:1395
+#: slider-bws.php:1403
 msgid "Warning"
 msgstr "Увага"
 
-#: slider-bws.php:1395
+#: slider-bws.php:1403
 msgid ""
 "You can add only images or video (in format: MP4, WebM or Ogg) to the slider."
 msgstr ""
 "Ви можете додавати в слайдер тільки зображення або відео (у форматі: MP4, "
 "WebM або Ogg)."
 
-#: slider-bws.php:1485
+#: slider-bws.php:1494
 msgid "Sorry, no slider found."
 msgstr "Вибачте, жодного слайдера не знайдено."
 
-#: slider-bws.php:1494
+#: slider-bws.php:1503
 msgid "slider category"
 msgstr "категорія слайдера"
 
-#: slider-bws.php:1505
+#: slider-bws.php:1514
 msgid "Sorry, no sliders categories found."
 msgstr "Вибачте, категорії слайдера не знайдені."
 
-#: slider-bws.php:1804
+#: slider-bws.php:1815
 msgid "Sorry, nothing found."
 msgstr "Вибачте, нічого не знайдено."
 
-#: slider-bws.php:1836
+#: slider-bws.php:1855
 msgid ""
 "You are about to remove these items from this slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -398,7 +398,7 @@ msgstr ""
 "Ви збираєтеся видалити вибрані елементи з цого слайдеру.\n"
 " 'Відміна' - скасувати, 'OK' - видалити."
 
-#: slider-bws.php:1837
+#: slider-bws.php:1856
 msgid ""
 "You are about to remove this item from the slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -406,31 +406,31 @@ msgstr ""
 "Ви збираєтеся видалити це зображення з цого слайдеру.\n"
 " 'Відміна' - скасувати, 'OK' - видалити."
 
-#: slider-bws.php:1838
+#: slider-bws.php:1857
 msgid "Insert Media"
 msgstr "Додати медіа"
 
-#: slider-bws.php:1839
+#: slider-bws.php:1858
 msgid "Insert"
 msgstr "Додати"
 
-#: slider-bws.php:1840
+#: slider-bws.php:1859
 msgid "No images found"
 msgstr "Не знайдено жодного зображення"
 
-#: slider-bws.php:1879
+#: slider-bws.php:1900
 msgid "Category per page"
 msgstr "Категорій на сторінці"
 
-#: slider-bws.php:1891
+#: slider-bws.php:1912
 msgid "Sliders per page"
 msgstr "Слайдерів на сторінці"
 
-#: slider-bws.php:1919
+#: slider-bws.php:1940
 msgid "FAQ"
 msgstr "Найпоширеніші питання"
 
-#: slider-bws.php:1920
+#: slider-bws.php:1941
 msgid "Support"
 msgstr "Підтримка"
 
@@ -551,8 +551,8 @@ msgstr "Підтримка"
 #~ msgid "Set pause when slideshow is hover"
 #~ msgstr "Включити паузу при наведенні курсору миші на слайд-шоу"
 
-#~ msgid "Set autoplay timeout in ms"
-#~ msgstr "Задати час автоматичного гортання в мс"
+#~ msgid "Set autoplay timeout in seconds"
+#~ msgstr "Задати час автоматичного гортання в секундах"
 
 #~ msgid "Search Slider Category"
 #~ msgstr "Шукати рубрику слайдера"
