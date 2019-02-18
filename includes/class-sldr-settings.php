@@ -71,9 +71,11 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 			if ( $this->is_general_settings ) {
 				$slider_request_options = array();
 				/* Set lazy load for slideshow */
-				$slider_request_options['lazy_load']			= ( isset( $_POST['sldr_lazy_load'] ) ) ? true : false;
+				$slider_request_options['lazy_load']			    = ( isset( $_POST['sldr_lazy_load'] ) ) ? true : false;
 				/* Set slide auto height */
-				$slider_request_options['auto_height']			= ( isset( $_POST['sldr_auto_height'] ) ) ? true : false;
+				$slider_request_options['auto_height']			    = ( isset( $_POST['sldr_auto_height'] ) ) ? true : false;
+				/* Display slider in the front page of the Renty theme. */
+				$slider_request_options['display_in_front_page']	= ( isset( $_POST['sldr_display_in_front_page'] ) ) ? intval( $_POST['sldr_display_in_front_page'] ) : 0;
 
 				$this->options = array_merge( $this->options, $slider_request_options );
 
@@ -113,7 +115,8 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 		/**
 		 *
 		 */
-		public function tab_settings() { ?>
+		public function tab_settings() {
+			global $wpdb; ?>
 			<h3 class="bws_tab_label"><?php _e( 'Slider Settings', 'slider-bws' ); ?></h3>
 			<?php $this->help_phrase(); ?>
 			<hr>
@@ -137,7 +140,32 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 							</label>
 						</td>
 					</tr>
-				<?php } else { ?>
+                    <?php $current_theme = wp_get_theme();
+					$current_theme = $current_theme->get( 'TextDomain' );
+                    if ( 'bws-renty' == $current_theme || 'renty' == $current_theme ) { ?>
+                        <tr>
+                            <th><?php _e( 'Homepage Slider', 'slider-bws' ); ?></th>
+                            <td>
+                                <label>
+                                    <select name="sldr_display_in_front_page">
+                                        <option value="0"><?php _e( 'None', 'slider-bws' ); ?></option>
+                                            <?php /* Get ids of all single sliders */
+                                            $sliders = $wpdb->get_results("SELECT `slider_id`, `title` FROM `" . $wpdb->prefix . "sldr_slider`", ARRAY_A );
+                                            /* Count number of single sliders */
+                                            $number_sliders = count( $sliders );
+                                            /* Display titles of the sliders in the drop down list */
+                                            for ( $i = 0; $i < $number_sliders; $i++ ) {
+                                                $id = $sliders[ $i ]['slider_id'];
+                                                $selected = $id == $this->options['display_in_front_page'] ? 'selected' : '';
+                                                echo( "<option value='" . $id . "' " . $selected . ">" . $sliders[ $i ]['title'] . "( id=" . $id . " )</option>");
+                                            } ?>
+                                    </select>
+                                    <span class="bws_info"><?php _e( 'which slider SHOULD BE DISPLAYED', 'slider-bws' ); ?></span>
+                                </label>
+                            </td>
+                        </tr>
+                    <?php }
+				} else { ?>
 					<tr>
 						<th><?php _e( 'Autoplay', 'slider-bws' ); ?></th>
 						<td>

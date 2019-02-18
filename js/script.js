@@ -1,5 +1,5 @@
 ( function( $ ) {
-	$( document ).ready( function() {
+	$( window ).on( 'load',  function() {
 
 		$( window ).on( 'resize', function() {
 			/* Enable style for the Booking search form */
@@ -99,6 +99,13 @@
 					return_location_list.css( {'display' : 'block', 'width' : '100%'} );
 				}
 			} );
+			/* Search form position regarding the height of the slider */
+			$( '.sldr_bkng_wrapper' ).each( function() {
+				var height = $( this ).find( '.sldr_wrapper' ).height();
+				var marginTop = Math.ceil( height * -0.2 );
+				$( this ).find( '.crrntl_search_form_wrap' ).find( '.crrntl_search_form' ).css( 'margin-top', marginTop );
+			} );
+
 		} ).trigger( 'resize' );
 	} );
 } )( jQuery );

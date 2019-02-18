@@ -156,8 +156,18 @@
 }
 /* Media TB_inline*/
 /* we can't use custom class or body class */
+@media screen and (max-width: 1400px) {
+	.sldr-media-attachment {
+		width: calc( 25% - 23px );
+	}
+}
+.post-slider-bws #TB_window{
+	box-sizing: border-box;
+	max-height: 450px;
+}
 #TB_window {
-	overflow: hidden;
+	box-sizing: border-box;
+	overflow: auto;
 }
 #TB_ajaxContent {
 	box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.1) inset;
@@ -212,7 +222,7 @@
 .sldr-media-attachment-details-box-right .attachment-details {
 	border-left: 1px solid #ddd;
 	background: #f3f3f3 none repeat scroll 0 0;
-	padding: 0 10px;
+	padding: 0 5px;
 	height: 100%;
 }
 .sldr-media-attachment-details-box-right .attachment-info {

@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
 Requires at least: 3.9
-Tested up to: 4.9.8
-Stable tag: 1.0.2
+Tested up to: 5.0.3
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,7 @@ Create beautiful slider that fits all your needs!
 * Configure an autoplay option:
 	* Pause on mouse hover
 	* Set autoplay speed
+* Compatible with [Car Rental V2](https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea) [NEW]
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -63,6 +64,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 * [Gallery](https://bestwebsoft.com/products/wordpress/plugins/gallery/?k=fe81f5feb5552cd2971f60d36e83c40f) - Add beautiful galleries, albums & images to your Wordpress website in a few clicks.
+* [Car Rental V2](https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea) - Create your own rental website for car renting and booking.
 
 == Installation ==
 
@@ -109,6 +111,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.0.3 - 18.02.2019 =
+* Update : All functionality was updated for WordPress 5.0.3.
+* NEW : The compatibility with Car Rental V2 by Bestwebsoft has been added.
+
 = V1.0.2 - 26.11.2018 =
 * Update : The autoplay timeout option has been set to seconds.
 * Bugfix : The bug with the shortcode has been fixed.
@@ -120,6 +126,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.0.3 =
+* The compatibility with new WordPress version updated.
+* New features added.
 
 = V1.0.2 =
 * Functionality improved.

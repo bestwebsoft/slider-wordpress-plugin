@@ -6,12 +6,12 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.2
+Version: 1.0.3
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2018 BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2019 BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -172,7 +172,8 @@ if ( ! function_exists( 'sldr_get_options_default' ) ) {
 			'auto_height'				=> '1',
 			'order_by'					=> 'meta_value_num',
 			'order'						=> 'ASC',
-			'bws_booking'               => 0
+			'bws_booking'               => 0,
+            'display_in_front_page'     => 0
 		);
 		return $option_defaults;
 	}
@@ -1360,7 +1361,14 @@ if ( ! function_exists( 'sldr_settings_page' ) ) {
 		$page = new Sldr_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 		<div class="wrap">
 			<h1><?php _e( 'Slider Global Settings', 'slider-bws' ); ?></h1>
-			<?php $page->display_content(); ?>
+            <noscript>
+                <div class="error below-h2">
+                    <p><strong><?php _e( 'WARNING', 'slider-bws' ); ?>
+                            :</strong> <?php _e( 'The plugin works correctly only if JavaScript is enabled.', 'slider-bws' ); ?>
+                    </p>
+                </div>
+            </noscript>
+            <?php $page->display_content(); ?>
 		</div>
 	<?php }
 }
@@ -1551,7 +1559,7 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
  *	Shortcodes content output function
  */
 if ( ! function_exists ( 'sldr_shortcode' ) ) {
-	function sldr_shortcode( $attr ) { 
+	function sldr_shortcode( $attr ) {
 		global $wpdb, $sldr_options;
 
 		$shortcode_attributes = shortcode_atts( array( 'id' => '', 'cat_id' => '' ), $attr );
@@ -1647,7 +1655,7 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 					}) (jQuery);
 				</script>
 				<?php /* Display images and images attributes from slider. */
-				echo '<div class="sldr_wrapper"><div class="owl-carousel owl-theme sldr_carousel_' . $id . '">';
+                echo '<div class="sldr_wrapper"><div class="owl-carousel owl-theme sldr_carousel_' . $id . '">';
 
 					foreach ( $slider_attachment_ids as $slider_attachment_id ) {
 						/* Get slides properties */
@@ -1692,7 +1700,7 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 
 						echo '</div>';
 					}
-				echo '</div></div>';
+				echo '</div>';
 
 			/* If this shortcode with slider category ID */
 			} elseif ( ! empty( $slider_categories_ids ) ) {
@@ -1808,14 +1816,14 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 						}
 					}
 				}
-				echo '</div></div>';
+				echo '</div>';
 			/* If nothing found. */
 			} else {
 				echo '<div class="sldr_wrapper"><p class="not_found">' . __( 'Sorry, nothing found.', 'slider-bws' ) . '</p></div>';
 			}
 			$settings = ! empty( $slider_single_settings ) ? $slider_single_settings : ( ! empty( $slider_category_setting ) ? $slider_category_setting : false );
 			do_action( 'sldr_after_content', $shortcode_attributes, maybe_unserialize( $settings ) );
-
+		    echo '</div>';
 		if ( is_plugin_active( 'car-rental/car-rental.php' ) || is_plugin_active( 'car-rental-pro/car-rental-pro.php' ) ) {
 			echo '</div>';
 			/* end of .sldr_bkng_wrapper */
@@ -2021,6 +2029,57 @@ if ( ! function_exists( 'sldr_plugin_uninstall' ) ) {
 	}
 }
 
+if ( ! function_exists( 'crrntl_homepage_slider' ) ) {
+	function sldr_homepage_slider() {
+		if (
+			is_home() ||
+			is_front_page() ||
+			is_page_template( 'page-homev1.php' ) ||
+			is_page_template( 'page-homev2.php' ) ||
+			is_page_template( 'page-homev3.php' )
+		) {
+			sldr_display_slider_before_content();
+		}
+	}
+}
+
+/**
+ * Display slider on home page
+ * @return void
+ */
+if ( ! function_exists( 'sldr_display_slider_before_content' ) ) {
+	function sldr_display_slider_before_content() {
+		global $sldr_options;
+		/* Find single slider which need to display in the front page of the Renty theme */
+		$id = $sldr_options['display_in_front_page'];
+		if ( 0 != $id ) {
+			echo do_shortcode( "[print_sldr id=" . $id . "]" );
+		}
+	}
+}
+
+
+/**
+ * Display slider on home page
+ * @return void
+ */
+if ( ! function_exists( 'sldr_homepage_slider_renty' ) ) {
+	function sldr_homepage_slider_renty( $slider_activ ) {
+		global $sldr_options, $wpdb;
+		$slider_activ = false;
+		$id = $sldr_options['display_in_front_page'];
+
+		/* Find single slider which need to display in the front page of the Renty theme */
+
+		if ( 0 != $id ) {
+			wp_enqueue_style( 'sldr_stylesheet_home', plugins_url( '/css/home_search_form.css', __FILE__ ) );
+			echo do_shortcode( "[print_sldr id=" . $id . "]" );
+			$slider_activ = true;
+		}
+		return $slider_activ;
+	}
+}
+
 register_activation_hook( __FILE__, 'sldr_plugin_activate' );
 
 add_action( 'admin_menu', 'sldr_add_admin_menu' );
@@ -2054,3 +2113,7 @@ add_filter( 'bws_shortcode_button_content', 'sldr_shortcode_button_content' );
 add_shortcode( 'print_sldr', 'sldr_shortcode' );
 
 add_filter( 'widget_text', 'do_shortcode' );
+
+/* Display slider on home page of the Renty theme */
+add_action( 'sldr_display_slider', 'sldr_homepage_slider' );
+add_filter( 'template_homepage_slider', 'sldr_homepage_slider_renty' );

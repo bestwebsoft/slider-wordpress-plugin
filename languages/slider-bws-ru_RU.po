@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Slider\n"
-"POT-Creation-Date: 2018-10-16 16:06+0300\n"
-"PO-Revision-Date: 2018-10-16 16:06+0300\n"
+"POT-Creation-Date: 2019-02-06 16:11+0200\n"
+"PO-Revision-Date: 2019-02-06 16:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/class-sldr-settings.php:28 includes/class-sldr-settings.php:35
-#: slider-bws.php:1939 slider-bws.php:1957
+#: slider-bws.php:1946 slider-bws.php:1964
 msgid "Settings"
 msgstr "Настройки"
 
@@ -30,35 +30,35 @@ msgstr "Разное"
 msgid "Custom Code"
 msgstr "Пользовательский код"
 
-#: includes/class-sldr-settings.php:34 slider-bws.php:416
+#: includes/class-sldr-settings.php:34 slider-bws.php:417
 msgid "Images"
 msgstr "Изображения"
 
-#: includes/class-sldr-settings.php:81
+#: includes/class-sldr-settings.php:83
 msgid "Settings saved."
 msgstr "Настройки сохранены."
 
-#: includes/class-sldr-settings.php:93
+#: includes/class-sldr-settings.php:95
 msgid "Slider Images"
 msgstr "Изображения слайдера"
 
-#: includes/class-sldr-settings.php:98
+#: includes/class-sldr-settings.php:100
 msgid "Adding images requires JavaScript."
 msgstr "Добавление изображений требует наличия JavaScript."
 
-#: includes/class-sldr-settings.php:101
+#: includes/class-sldr-settings.php:103
 msgid "Add Media"
 msgstr "Добавить медиафайл"
 
-#: includes/class-sldr-settings.php:117
+#: includes/class-sldr-settings.php:120
 msgid "Slider Settings"
 msgstr "Настройки Slider"
 
-#: includes/class-sldr-settings.php:123
+#: includes/class-sldr-settings.php:126
 msgid "Lazy Load"
 msgstr "Отложенная загрузка"
 
-#: includes/class-sldr-settings.php:127
+#: includes/class-sldr-settings.php:130
 msgid ""
 "Enable to delay images loading (recommend for sliders with lots of slides). "
 "Images will not be loaded until they are in outside of viewport."
@@ -67,11 +67,11 @@ msgstr ""
 "большим количеством слайдов). Изображения не загружаются, пока не попадают в "
 "область видимости."
 
-#: includes/class-sldr-settings.php:132
+#: includes/class-sldr-settings.php:135
 msgid "Auto Height"
 msgstr "Автоматическая высота"
 
-#: includes/class-sldr-settings.php:136
+#: includes/class-sldr-settings.php:139
 msgid ""
 "Enable to change slider height automatically (according to the hight of the "
 "slide)."
@@ -79,57 +79,69 @@ msgstr ""
 "Включите, чтобы высота слайдера изменялась автоматически (в соответствии с "
 "высотой слайда)."
 
-#: includes/class-sldr-settings.php:142
+#: includes/class-sldr-settings.php:147
+msgid "Homepage Slider"
+msgstr "Слайдер домашней страницы"
+
+#: includes/class-sldr-settings.php:151
+msgid "None"
+msgstr "Нет"
+
+#: includes/class-sldr-settings.php:163
+msgid "which slider SHOULD BE DISPLAYED"
+msgstr "какой слайдер должен отображаться"
+
+#: includes/class-sldr-settings.php:170
 msgid "Autoplay"
 msgstr "Автовоспроизведение"
 
-#: includes/class-sldr-settings.php:145
+#: includes/class-sldr-settings.php:173
 msgid "Enable to turn autoplay on for the slideshow."
 msgstr "Включить автовоспроизведение для слайд-шоу."
 
-#: includes/class-sldr-settings.php:150
+#: includes/class-sldr-settings.php:178
 msgid "Autoplay Timeout"
 msgstr "Задержка автовоспроизведения"
 
-#: includes/class-sldr-settings.php:153
+#: includes/class-sldr-settings.php:181
 msgid "sec"
 msgstr "сек"
 
-#: includes/class-sldr-settings.php:158
+#: includes/class-sldr-settings.php:186
 msgid "Autoplay Pause"
 msgstr "Пауза автовоспроизведения"
 
-#: includes/class-sldr-settings.php:162
+#: includes/class-sldr-settings.php:190
 msgid "Enable to pause autoplay on mouse hover."
 msgstr ""
 "Включите паузу, чтобы остановить автовоспроизведение при наведении "
 "указателем мыши."
 
-#: includes/class-sldr-settings.php:167
+#: includes/class-sldr-settings.php:195
 msgid "Loop"
 msgstr "Цикл"
 
-#: includes/class-sldr-settings.php:171
+#: includes/class-sldr-settings.php:199
 msgid "Enable to loop the slideshow."
 msgstr "Включить цикличность для слайдера."
 
-#: includes/class-sldr-settings.php:176
+#: includes/class-sldr-settings.php:204
 msgid "Navigation"
 msgstr "Навигация"
 
-#: includes/class-sldr-settings.php:181
+#: includes/class-sldr-settings.php:209
 msgid "Arrows"
 msgstr "Стрелки"
 
-#: includes/class-sldr-settings.php:186
+#: includes/class-sldr-settings.php:214
 msgid "Dots"
 msgstr "Точки"
 
-#: includes/class-sldr-settings.php:192
+#: includes/class-sldr-settings.php:220
 msgid "Number of Visible Images per Slide"
 msgstr "Количество видимых изображений в одном слайде"
 
-#: includes/class-sldr-settings.php:196
+#: includes/class-sldr-settings.php:224
 msgid "Number of Images which are displayed simultaneously on a single slide."
 msgstr ""
 "Количество изображений, которые отображаются одновременно на одном слайде."
@@ -158,67 +170,67 @@ msgstr "Общие настройки Slider"
 msgid "Global Settings"
 msgstr "Общие настройки"
 
-#: slider-bws.php:297 slider-bws.php:1479
+#: slider-bws.php:298 slider-bws.php:1486
 msgid "slider"
 msgstr "слайдер"
 
-#: slider-bws.php:298
+#: slider-bws.php:299
 msgid "sliders"
 msgstr "слайдеры"
 
-#: slider-bws.php:325
+#: slider-bws.php:326
 msgid "No Thumbnail Set."
 msgstr "Миниатюра не задана."
 
-#: slider-bws.php:335
+#: slider-bws.php:336
 msgid "No Images Set."
 msgstr "Изображения не заданы."
 
-#: slider-bws.php:361
+#: slider-bws.php:362
 msgid "No Category Set."
 msgstr "Рубрики не заданы."
 
-#: slider-bws.php:381 slider-bws.php:636
+#: slider-bws.php:382 slider-bws.php:636
 msgid "Edit"
 msgstr "Редактировать"
 
-#: slider-bws.php:382 slider-bws.php:468 slider-bws.php:637 slider-bws.php:697
+#: slider-bws.php:383 slider-bws.php:469 slider-bws.php:637 slider-bws.php:697
 msgid "Delete"
 msgstr "Удалить"
 
-#: slider-bws.php:385 slider-bws.php:1486
+#: slider-bws.php:386 slider-bws.php:1493
 msgid "no title"
 msgstr "без названия"
 
-#: slider-bws.php:414
+#: slider-bws.php:415
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
-#: slider-bws.php:415 slider-bws.php:896
+#: slider-bws.php:416 slider-bws.php:896
 msgid "Title"
 msgstr "Название"
 
-#: slider-bws.php:417
+#: slider-bws.php:418
 msgid "Category"
 msgstr "Рубрика"
 
-#: slider-bws.php:418 slider-bws.php:669
+#: slider-bws.php:419 slider-bws.php:669
 msgid "Shortcode"
 msgstr "Шорткод"
 
-#: slider-bws.php:419
+#: slider-bws.php:420
 msgid "Date"
 msgstr "Дата"
 
-#: slider-bws.php:425
+#: slider-bws.php:426
 msgid "No Sliders Found"
 msgstr "Слайдеры не найдены"
 
-#: slider-bws.php:450
+#: slider-bws.php:451
 msgid "All Categories"
 msgstr "Все рубрики"
 
-#: slider-bws.php:456
+#: slider-bws.php:457
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -366,34 +378,42 @@ msgstr ""
 msgid "No Slider Category Set"
 msgstr "Рубрики слайдера не заданы"
 
-#: slider-bws.php:1403
+#: slider-bws.php:1366
+msgid "WARNING"
+msgstr "ВНИМАНИЕ"
+
+#: slider-bws.php:1367
+msgid "The plugin works correctly only if JavaScript is enabled."
+msgstr "Плагин работает корректно только при включенном JavaScript."
+
+#: slider-bws.php:1410
 msgid "Warning"
 msgstr "Внимание"
 
-#: slider-bws.php:1403
+#: slider-bws.php:1410
 msgid ""
 "You can add only images or video (in format: MP4, WebM or Ogg) to the slider."
 msgstr ""
 "В слайдер можно добавлять только изображения или видео (в формате: MP4, WebM "
 "или Ogg)."
 
-#: slider-bws.php:1494
+#: slider-bws.php:1501
 msgid "Sorry, no slider found."
 msgstr "Извините, не найдено ни одного слайдера."
 
-#: slider-bws.php:1503
+#: slider-bws.php:1510
 msgid "slider category"
 msgstr "рубрика слайдера"
 
-#: slider-bws.php:1514
+#: slider-bws.php:1521
 msgid "Sorry, no sliders categories found."
 msgstr "Извините, рубрики слайдера не найдены."
 
-#: slider-bws.php:1815
+#: slider-bws.php:1822
 msgid "Sorry, nothing found."
 msgstr "Извините, ничего не найдено."
 
-#: slider-bws.php:1855
+#: slider-bws.php:1862
 msgid ""
 "You are about to remove these items from this slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -401,7 +421,7 @@ msgstr ""
 "Вы собираетесь удалить эти изображения из этого слайдера.\n"
 " «Отмена» — оставить, «ОК» — удалить."
 
-#: slider-bws.php:1856
+#: slider-bws.php:1863
 msgid ""
 "You are about to remove this item from the slider.\n"
 " 'Cancel' to stop, 'OK' to delete."
@@ -409,31 +429,31 @@ msgstr ""
 "Вы собираетесь удалить это изображение из этого слайдера.\n"
 " «Отмена» — оставить, «ОК» — удалить."
 
-#: slider-bws.php:1857
+#: slider-bws.php:1864
 msgid "Insert Media"
 msgstr "Добавить медиафайл"
 
-#: slider-bws.php:1858
+#: slider-bws.php:1865
 msgid "Insert"
 msgstr "Добавить"
 
-#: slider-bws.php:1859
+#: slider-bws.php:1866
 msgid "No images found"
 msgstr "Изображения не заданы"
 
-#: slider-bws.php:1900
+#: slider-bws.php:1907
 msgid "Category per page"
 msgstr "Рубрик на странице"
 
-#: slider-bws.php:1912
+#: slider-bws.php:1919
 msgid "Sliders per page"
 msgstr "Слайдеров на странице"
 
-#: slider-bws.php:1940
+#: slider-bws.php:1947
 msgid "FAQ"
 msgstr "Частые вопросы"
 
-#: slider-bws.php:1941
+#: slider-bws.php:1948
 msgid "Support"
 msgstr "Тех.поддержка"
 
@@ -614,9 +634,6 @@ msgstr "Тех.поддержка"
 
 #~ msgid "Animation incoming slide"
 #~ msgstr "Анимация входящего слайда"
-
-#~ msgid "None"
-#~ msgstr "Нет"
 
 #~ msgid "Fade out"
 #~ msgstr "Исчезновение"

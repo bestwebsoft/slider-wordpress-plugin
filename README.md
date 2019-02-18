@@ -34,6 +34,7 @@
 <li>Set autoplay speed</li>
 </ul>
 </li>
+<li>Compatible with <a href="https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea" rel="nofollow">Car Rental V2</a> [NEW]</li>
 <li>Add custom code via plugin settings page</li>
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
@@ -58,4 +59,5 @@
 <ul>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/updater/?k=c00f28a63d8a03a1ea093044188552ef" rel="nofollow">Updater</a> &#8211; Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.</li>
 <li><a href="https://bestwebsoft.com/products/wordpress/plugins/gallery/?k=fe81f5feb5552cd2971f60d36e83c40f" rel="nofollow">Gallery</a> &#8211; Add beautiful galleries, albums &amp; images to your WordPress website in a few clicks.</li>
+<li><a href="https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea" rel="nofollow">Car Rental V2</a> &#8211; Create your own rental website for car renting and booking.</li>
 </ul>
