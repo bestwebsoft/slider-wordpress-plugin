@@ -6,7 +6,7 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.3
+Version: 1.0.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -2078,6 +2078,129 @@ if ( ! function_exists( 'sldr_homepage_slider_renty' ) ) {
 		}
 		return $slider_activ;
 	}
+}
+
+/* Get Slider data objects */
+if ( ! function_exists( 'sldr_get_slider_data' ) ) {
+    function sldr_get_slider_data( $number = '', $categories = '', $id = '' ) {
+		global $sldr_options, $wpdb;
+
+		if ( empty( $sldr_options ) ) {
+			sldr_settings();
+        }
+
+		// get sliders array from db
+        $sliders = $wpdb->get_results( "
+            SELECT *
+            FROM {$wpdb->prefix}sldr_slider
+            ", ARRAY_A
+        );
+
+		if ( '' != $id ) {
+			foreach ( $sliders as $item ) {
+				foreach ( $item as $key => $val ) {
+					if ( 'title' == $key && $id != $val ) {
+						unset( $sliders[ $key ] );
+					}
+				}
+			}
+		}
+
+		if ( '' != $number ) {
+			$sliders = array_splice( $sliders, $number );
+		}
+
+		// get sliders categories from db
+        if ( '' == $categories ) {
+			$slider_categories = $wpdb->get_results( "
+                SELECT 
+                {$wpdb->prefix}sldr_relation.category_id, 
+                {$wpdb->prefix}sldr_category.title,
+                {$wpdb->prefix}sldr_relation.slider_id
+                FROM {$wpdb->prefix}sldr_relation
+                LEFT JOIN {$wpdb->prefix}sldr_category
+                ON {$wpdb->prefix}sldr_relation.category_id = {$wpdb->prefix}sldr_category.category_id
+                WHERE {$wpdb->prefix}sldr_relation.category_id <> ''
+                ", ARRAY_A
+			);
+        } else {
+            if ( is_array( $categories ) ) {
+				foreach ( $categories as $val ) {
+					$categories = implode( ',', $val );
+				}
+            }
+			$slider_categories = $wpdb->get_results( "
+                SELECT 
+                {$wpdb->prefix}sldr_relation.category_id, 
+                {$wpdb->prefix}sldr_category.title,
+                {$wpdb->prefix}sldr_relation.slider_id
+                FROM {$wpdb->prefix}sldr_relation
+                LEFT JOIN {$wpdb->prefix}sldr_category
+                ON {$wpdb->prefix}sldr_relation.category_id = {$wpdb->prefix}sldr_category.category_id
+                WHERE {$wpdb->prefix}sldr_relation.category_id <> ''
+                AND {$wpdb->prefix}sldr_category.title IN '$categories'
+                ", ARRAY_A
+			);
+        }
+
+        // get slides from db
+		$slides = $wpdb->get_results( " 
+		    SELECT 
+		    {$wpdb->prefix}sldr_slide.slide_id,
+		    {$wpdb->prefix}sldr_slide.attachment_id,
+		    {$wpdb->prefix}sldr_slide.title,
+		    {$wpdb->prefix}sldr_slide.description,
+		    {$wpdb->prefix}sldr_slide.url,
+		    {$wpdb->prefix}sldr_slide.button,
+		    {$wpdb->prefix}sldr_slide.order,
+		    {$wpdb->prefix}sldr_relation.slider_id
+		    FROM {$wpdb->prefix}sldr_slide
+		    LEFT JOIN {$wpdb->prefix}sldr_relation
+		    ON {$wpdb->prefix}sldr_relation.attachment_id = {$wpdb->prefix}sldr_slide.attachment_id
+		    ", ARRAY_A
+        );
+
+        // loop sliders, add sliders settigns to the array
+		foreach ( $sliders as $item => $arr ) {
+		    foreach ( $arr as $key => $val ) {
+		        if ( 'settings' == $key ) {
+		            $sliders[ $item ][ $key ] = maybe_unserialize( $val );
+                }
+            }
+        }
+
+		// loop categories if exists, add to the main array
+		foreach ( ( array ) $slider_categories as $sldr_ctgr_arr ) {
+			foreach ( $sldr_ctgr_arr as $sldr_ctgr_key => $sldr_ctgr_val ) {
+				foreach ( $sliders as $sliders_arr => $slider_arr ) {
+					foreach ( $slider_arr as $slider_key => $slider_val ) {
+
+                        if ( $sldr_ctgr_key == $slider_key && $sldr_ctgr_val == $slider_val ) {
+                            $sliders[ $sliders_arr ]['categories'][] = $sldr_ctgr_arr;
+                        }
+
+					}
+				}
+			}
+		}
+
+        // loop sliders and slides, add slides to the main array
+        foreach ( $sliders as $sliders_arr => $slider_arr ) {
+            foreach ( $slider_arr as $slider_key => $slider_val ) {
+                foreach ( $slides as $slide_arr ) {
+                    foreach ( $slide_arr as $slide_key => $slide_val ) {
+
+                        if ( $slide_key == $slider_key && $slide_val == $slider_val ) {
+                            $sliders[ $sliders_arr ]['slides'][] = $slide_arr;
+                        }
+
+                    }
+                }
+            }
+        }
+
+		return $sliders;
+    }
 }
 
 register_activation_hook( __FILE__, 'sldr_plugin_activate' );

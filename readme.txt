@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
 Requires at least: 3.9
-Tested up to: 5.0.3
-Stable tag: 1.0.3
+Tested up to: 5.2
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,7 +35,7 @@ Create beautiful slider that fits all your needs!
 * Configure an autoplay option:
 	* Pause on mouse hover
 	* Set autoplay speed
-* Compatible with [Car Rental V2](https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea) [NEW]
+* Compatible with [Car Rental V2](https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea)
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -111,6 +111,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.0.4 - 13.05.2019 =
+* Update : The function for returning an array of objects has been added.
+
 = V1.0.3 - 18.02.2019 =
 * Update : All functionality was updated for WordPress 5.0.3.
 * NEW : The compatibility with Car Rental V2 by Bestwebsoft has been added.
@@ -126,6 +129,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+* Functionality improved.
 
 = V1.0.3 =
 * The compatibility with new WordPress version updated.

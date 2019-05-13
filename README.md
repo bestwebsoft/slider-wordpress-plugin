@@ -34,7 +34,7 @@
 <li>Set autoplay speed</li>
 </ul>
 </li>
-<li>Compatible with <a href="https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea" rel="nofollow">Car Rental V2</a> [NEW]</li>
+<li>Compatible with <a href="https://bestwebsoft.com/products/wordpress/plugins/car-rental-v2/?k=8d2650e3efb95bcf595a40d077ac83ea" rel="nofollow">Car Rental V2</a></li>
 <li>Add custom code via plugin settings page</li>
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
