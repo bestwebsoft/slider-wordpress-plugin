@@ -6,12 +6,12 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.5
+Version: 1.0.6
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2019 BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2020 BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -70,7 +70,7 @@ if ( ! function_exists( 'sldr_init' ) ) {
 		};
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $sldr_plugin_info, '3.9' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $sldr_plugin_info, '4.5' );
 		/* Call register settings function */
 		sldr_settings();
 	}
@@ -318,12 +318,10 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 			switch ( $column_name ) {
 				case 'thumbnail':
 					/* Thumbnail is first sliders picture */
-					$thumbnail = wp_get_attachment_image( array_shift( $slider_attachment_ids ), array( 100, 100 ) );
+					$thumbnail =   wp_get_attachment_image( array_shift( $slider_attachment_ids ), array( 100, 100 )  ) ;
 
 					if ( ! empty( $thumbnail ) ) {
-						echo '<a href="?page=slider-new.php&sldr_id=' . $item['slider_id'] . '"><span class="sldr_media_icon image-icon">' . $thumbnail . '</span></a>';
-					} else {
-						echo '<i>' . __( 'No Thumbnail Set.', 'slider-bws' ) . '</i>';
+						echo '<a href="?page=slider-new.php&sldr_id=' . $item['slider_id'] . '"><span class="sldr_media_icon fixed column-format">' . $thumbnail . '</span></a>';
 					}
 					break;
 				case 'shortcode':
@@ -333,7 +331,7 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 					if ( ! empty( $slider_attachment_ids ) ) {
 						echo count( $slider_attachment_ids );
 					} else {
-						echo '<i>' . __( 'No Images Set.', 'slider-bws' ) . '</i>';
+						echo '0';
 					}
 					break;
 				case 'category':
@@ -349,20 +347,26 @@ if ( ! class_exists( 'Sldr_List_Table' ) ) {
 
 						if ( ! empty( $slider_current_categories_id ) ) {
 							$slider_category_title = $wpdb->get_var( $wpdb->prepare( "SELECT `title` FROM `" . $wpdb->prefix . "sldr_category` WHERE `category_id` = %d", $slider_current_categories_id ) );
-							$slider_category_title_array[] = $slider_category_title;
+							$slider_category_title_array[] = array (
+								'id' => $slider_current_categories_id,
+								'title' => $slider_category_title
+							);
 						}
-						
 					}
 					unset( $slider_current_categories_id );
 
 					if ( ! empty( $slider_category_title_array ) ) {
 						/* Display category with comma. */
-						echo implode( ', ', $slider_category_title_array );
+						foreach ( $slider_category_title_array as $slider_category ) {
+							echo '<a href="?page=slider-categories.php&sldr_category_id=' . $slider_category['id'] . '&action=edit">' . $slider_category['title'] . '</a><br>';
+						}
 					} else {
-						echo '<i>' . __( 'No Category Set.', 'slider-bws' ) . '</i>';
+						echo '<p>—</p>';
 					}
 					break;
 				case 'datetime':
+					echo str_replace ('-', '/' , $item[ $column_name ]);
+					break;
 				case 'title':
 					return $item[ $column_name ];
 					break;
@@ -1095,11 +1099,11 @@ if ( ! function_exists ( 'sldr_form_handler' ) ) {
 					} else {
 						$wpdb->insert( $wpdb->prefix . 'sldr_slide',
 							array(
-								'attachment_id' => $slider_attachment_id,
 								'title' => $slider_attachment_title,
 								'description' => $slider_attachment_description,
 								'url' => $slider_attachment_url,
-								'button' => $slider_attachment_button_text
+								'button' => $slider_attachment_button_text,
+								'attachment_id' => $slider_attachment_id
 							)
 						);
 					}
@@ -1160,7 +1164,9 @@ if ( ! function_exists( 'sldr_add_new_render' ) ) {
 								</div>
 								<div class="inside"></div>
 							</div>
-							<?php require_once( dirname( __FILE__ ) . '/includes/class-sldr-settings.php' );
+							<?php 	if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+							require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
+							require_once( dirname( __FILE__ ) . '/includes/class-sldr-settings.php' );
 							$page = new Sldr_Settings_Tabs( plugin_basename( __FILE__ ) );
 							$page->display_tabs(); ?>
 						</div><!-- end .post-body-content -->
@@ -1337,7 +1343,7 @@ if ( ! function_exists( 'sldr_category_metabox' ) ) {
 					foreach ( $slider_categories as $slider_category ) { ?>
 						<li>
 							<input type="checkbox" name="sldr_category_id[]" value="<?php echo $slider_category['category_id']; ?>"<?php if ( isset( $slider_current_categories ) && in_array( $slider_category['category_id'], $slider_current_categories ) ) echo 'checked="checked"'; ?> />
-							<input id="sldr_hidden_checbox" type="hidden" value="<?php echo $slider_category['category_id']; ?>" name="sldr_category_unchecked_id[]">
+							<input id="sldr_hidden_checbox_<?php echo $slider_category['category_id']; ?>" type="hidden" value="<?php echo $slider_category['category_id']; ?>" name="sldr_category_unchecked_id[]">
 							<?php echo esc_html( $slider_category['title'] ); ?>
 						</li>
 					<?php }
@@ -1357,6 +1363,8 @@ if ( ! function_exists( 'sldr_category_metabox' ) ) {
  */
 if ( ! function_exists( 'sldr_settings_page' ) ) {
 	function sldr_settings_page() {
+		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
+    		require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/includes/class-sldr-settings.php' );
 		$page = new Sldr_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
 		<div class="wrap">
@@ -1381,15 +1389,16 @@ if ( ! function_exists( 'sldr_settings_page' ) ) {
 if ( ! function_exists( 'sldr_print_media_notice' ) ) {
 	function sldr_print_media_notice() {
 		if ( isset( $_GET['page'] ) && $_GET['page'] == 'slider-new.php' ) {
-			$image_info = '<# sldr_notice_view( data.id ); #><div id="sldr_media_notice" class="upload-errors"></div>'; ?>
-			<script type="text/javascript">
-				( function ($) {
+			$image_info = '<# sldr_notice_view( data.id ); #><div id="sldr_media_notice" class="upload-errors"></div>';
+			$script = "( function ($) {
 					$( '#tmpl-attachment-details' ).html(
-						$( '#tmpl-attachment-details' ).html().replace( '<div class="attachment-info"', '<?php echo $image_info; ?>$&' )
+						$( '#tmpl-attachment-details' ).html().replace( '<div class=\"attachment-info\"', '" . $image_info . "$&' )
 					);
-				} )(jQuery);
-			</script>
-		<?php }
+				} )(jQuery);";
+			wp_register_script( 'sldr_bws_image_info', '' );
+			wp_enqueue_script( 'sldr_bws_image_info' );
+			wp_add_inline_script( 'sldr_bws_image_info', sprintf( $script ) );	
+		}
 	}
 }
 
@@ -1424,9 +1433,9 @@ if ( ! function_exists( 'sldr_delete_image' ) ) {
 		global $wpdb;
 		check_ajax_referer( plugin_basename( __FILE__ ), 'sldr_ajax_nonce_field' );
 
-		$action				= isset( $_POST['action'] ) ? $_POST['action'] : "";
+		$action				= isset( $_POST['action'] ) ? esc_attr( $_POST['action'] ) : "";
 		$delete_id_array	= isset( $_POST['delete_id_array'] ) ? $_POST['delete_id_array'] : "";
-		$slider_id			= $_POST['slider_id'];
+		$slider_id			= isset( $_POST['slider_id'] ) ?  $_POST['slider_id'] : "";
 
 		if ( 'sldr_delete_image' == $action && ! empty( $delete_id_array ) && ! empty( $slider_id ) ) {
 			$delete_ids = explode( ',', trim( $delete_id_array, ',' ) );
@@ -1440,7 +1449,7 @@ if ( ! function_exists( 'sldr_delete_image' ) ) {
 				);
 			}
 			echo 'updated';
-		}
+		};
 		die();
 	}
 }
@@ -1524,32 +1533,34 @@ if ( ! function_exists( 'sldr_shortcode_button_content' ) ) {
 			</fieldset>
 			<?php foreach ( $slider_id_array as $slider_id ) {
 				echo '<input class="bws_default_shortcode" type="hidden" name="default" value="[print_sldr id=' . $slider_id . ']" />';
-			} ?>
-			<script type="text/javascript">
-				function sldr_shortcode_init() {
-					( function( $ ) {
-						$( '.mce-reset #sldr_shortcode_list, .mce-reset #sldr_display_short, .mce-reset .sldr_radio_shortcode_list' ).on( 'click', function() {
-							var sldr_list = $( '.mce-reset #sldr_shortcode_list option:selected' ).val();
-							var shortcode = '[print_sldr id=' + sldr_list + ']';
-							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
-						});
+			}
 
-						$( '.mce-reset #sldr_category_shortcode_list, .mce-reset .sldr_radio_category_list' ).on( 'click', function() {
-							var sldr_category_list = $( '.mce-reset #sldr_category_shortcode_list option:selected' ).val();
-							var shortcode = '[print_sldr cat_id=' + sldr_category_list + ']';
-							$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
-						});
+			$script = "function sldr_shortcode_init() {
+				( function( $ ) {
+					$( '.mce-reset #sldr_shortcode_list, .mce-reset #sldr_display_short, .mce-reset .sldr_radio_shortcode_list' ).on( 'click', function() {
+						var sldr_list = $( '.mce-reset #sldr_shortcode_list option:selected' ).val();
+						var shortcode = '[print_sldr id=' + sldr_list + ']';
+						$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
+					});
 
-						$( '[name="sldr_type"]' ).on( 'click', function() {
-							$( this ).parent().find( 'select' ).focus();
-						} );
+					$( '.mce-reset #sldr_category_shortcode_list, .mce-reset .sldr_radio_category_list' ).on( 'click', function() {
+						var sldr_category_list = $( '.mce-reset #sldr_category_shortcode_list option:selected' ).val();
+						var shortcode = '[print_sldr cat_id=' + sldr_category_list + ']';
+						$( '.mce-reset #bws_shortcode_display' ).text( shortcode );
+					});
 
-						$( '#sldr_shortcode_list, #sldr_category_shortcode_list' ).on( 'focus', function() {
-							$( this ).parent().find( '[type="radio"]' ).attr( 'checked', true );
-						} );
-					} )(jQuery);
-				}
-			</script>
+					$( '[name=\"sldr_type\"]' ).on( 'click', function() {
+						$( this ).parent().find( 'select' ).focus();
+					} );
+
+					$( '#sldr_shortcode_list, #sldr_category_shortcode_list' ).on( 'focus', function() {
+						$( this ).parent().find( '[type=\"radio\"]' ).attr( 'checked', true );
+					} );
+				} )(jQuery);
+			}";
+			wp_register_script( 'sldr_bws_shortcode_button', '' );
+			wp_enqueue_script( 'sldr_bws_shortcode_button' );
+			wp_add_inline_script( 'sldr_bws_shortcode_button', sprintf( $script ) ); ?>	
 			<div class="clear"></div>
 		</div>
 	<?php }
@@ -1601,17 +1612,16 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 			echo '<div class="sldr_bkng_wrapper">';
 		}
 			/* If this shortcode with slider ID */
-			if ( ! empty( $slider_attachment_ids ) ) { ?>
-				<script type="text/javascript">
-					( function($) {
+			if ( ! empty( $slider_attachment_ids ) ) {
+				$script = "( function($) {
 						$( document ).ready( function() {
-							var slider_single_settings = '<?php echo json_encode( $slider_single_settings ); ?>';
+							var slider_single_settings = '" . json_encode( $slider_single_settings ) . "';
 							slider_single_settings 	= JSON.parse( slider_single_settings );
 
-							var slider_options 		= '<?php echo json_encode( $sldr_options ); ?>';
+							var slider_options 		= '" . json_encode( $sldr_options ) . "';
 							slider_options 			= JSON.parse( slider_options );
 
-							var id = <?php echo json_encode( $id ); ?>;
+							var id = " . json_encode( $id ) . ";
 
 							if ( $( 'body' ).hasClass( 'rtl' ) ) {
 								$( '.sldr_carousel_' + id  ).owlCarousel( {
@@ -1627,8 +1637,8 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 									lazyLoad: 			slider_options.lazy_load,
 									autoHeight: 		slider_options.auto_height,
 									navText:[
-														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+														\"<i class='dashicons dashicons-arrow-left-alt2'></i>\",
+														\"<i class='dashicons dashicons-arrow-right-alt2'></i>\"
 									],
 									rtl: true
 								} );
@@ -1646,15 +1656,19 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 									lazyLoad: 			slider_options.lazy_load,
 									autoHeight: 		slider_options.auto_height,
 									navText:[
-														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+														\"<i class='dashicons dashicons-arrow-left-alt2'></i>\",
+														\"<i class='dashicons dashicons-arrow-right-alt2'></i>\"
 									]
 								});
 							}
 						});
-					}) (jQuery);
-				</script>
-				<?php /* Display images and images attributes from slider. */
+					}) (jQuery);";
+				
+				wp_register_script( 'sldr_slider_settings_' . $id, '' );
+				wp_enqueue_script( 'sldr_slider_settings_' . $id );
+				wp_add_inline_script( 'sldr_slider_settings_' . $id, sprintf( $script ) );	
+
+				/* Display images and images attributes from slider. */
                 echo '<div class="sldr_wrapper"><div class="owl-carousel owl-theme sldr_carousel_' . $id . '">';
 
 					foreach ( $slider_attachment_ids as $slider_attachment_id ) {
@@ -1707,17 +1721,17 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 
 				/* Get slider settings */
 				$slider_category_setting 	= $wpdb->get_var( $wpdb->prepare( "SELECT `settings` FROM `" . $wpdb->prefix . "sldr_slider` WHERE `slider_id` = %d", $slider_categories_ids[0] ) ); /* Get options of first slider */
-				$slider_category_settings	= unserialize( $slider_category_setting ); ?>
-				<script type="text/javascript">
-					( function( $ ) {
+				$slider_category_settings	= unserialize( $slider_category_setting );
+
+				$script = "( function( $ ) {
 						$( document ).ready( function() {
-							var slider_options = '<?php echo json_encode( $sldr_options ); ?>';
+							var slider_options = '" . json_encode( $sldr_options ) . "';
 							slider_options = JSON.parse( slider_options );
 
-							var slider_category_settings = '<?php echo json_encode( $slider_category_settings ); ?>';
+							var slider_category_settings = '" . json_encode( $slider_category_settings ) . "';
 							slider_category_settings = JSON.parse( slider_category_settings );
 
-							var cat_id = <?php echo json_encode( $cat_id ); ?>;
+							var cat_id = " . json_encode( $cat_id ) . ";
 
 							$( '.sldr_cat_carousel_'+ cat_id ).find( '.owl-item' );
 
@@ -1735,8 +1749,8 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 									lazyLoad:			slider_options.lazy_load,
 									autoHeight: 		slider_options.auto_height,
 									navText:[
-														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+														\"<i class='dashicons dashicons-arrow-left-alt2'></i>\",
+														\"<i class='dashicons dashicons-arrow-right-alt2'></i>\"
 									],
 									rtl: true
 								} );
@@ -1754,16 +1768,19 @@ if ( ! function_exists ( 'sldr_shortcode' ) ) {
 									lazyLoad:			slider_options.lazy_load,
 									autoHeight: 		slider_options.auto_height,
 									navText:[
-														"<i class='dashicons dashicons-arrow-left-alt2'></i>",
-														"<i class='dashicons dashicons-arrow-right-alt2'></i>"
+														\"<i class='dashicons dashicons-arrow-left-alt2'></i>\",
+														\"<i class='dashicons dashicons-arrow-right-alt2'></i>\"
 									]
 								} );
 							}
 						} );
-					} ) (jQuery);
-				</script>
+					} ) (jQuery);";
 
-				<?php echo '<div class="sldr_wrapper"><div class="sldr_cat_carousel_' . $cat_id . ' owl-carousel owl-theme">';
+				wp_register_script( 'sldr_slider_settings_category_' . $cat_id, '' );
+				wp_enqueue_script( 'sldr_slider_settings_category_' . $cat_id );
+				wp_add_inline_script( 'sldr_slider_settings_category_' . $cat_id, sprintf( $script ) );
+
+				echo '<div class="sldr_wrapper"><div class="sldr_cat_carousel_' . $cat_id . ' owl-carousel owl-theme">';
 
 				foreach ( $slider_categories_ids as $slider_categories_id ) {
 
@@ -1891,7 +1908,16 @@ if ( ! function_exists( 'sldr_register_scripts' ) ) {
 		/* Include jquery */
 		wp_enqueue_script( 'jquery' );
 		/* Slider script */
-		wp_enqueue_script( 'owl.carousel.js', plugins_url( '/js/owl.carousel.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.carousel.js', plugins_url( '/js/owl.carousel/owl.carousel.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.animate.js', plugins_url( '/js/owl.carousel/owl.animate.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.autoheight.js', plugins_url( '/js/owl.carousel/owl.autoheight.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.autoplay.js', plugins_url( '/js/owl.carousel/owl.autoplay.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.autorefresh.js', plugins_url( '/js/owl.carousel/owl.autorefresh.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.hash.js', plugins_url( '/js/owl.carousel/owl.hash.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.lazyload.js', plugins_url( '/js/owl.carousel/owl.lazyload.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.navigation.js', plugins_url( '/js/owl.carousel/owl.navigation.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.support.js', plugins_url( '/js/owl.carousel/owl.support.js', __FILE__ ) );
+		wp_enqueue_script( 'owl.video.js', plugins_url( '/js/owl.carousel/owl.video.js', __FILE__ ) );
 		/* Frontend script */
 		wp_enqueue_script( 'sldr_front_script', plugins_url( 'js/script.js', __FILE__ ) );
 	}
@@ -1978,7 +2004,7 @@ if ( ! function_exists ( 'sldr_admin_notices' ) ) {
 		if ( 'plugins.php' == $hook_suffix || ( isset( $_GET['page'] ) && $_GET['page'] == 'slider-settings.php' ) ) {
 			if ( 'plugins.php' == $hook_suffix ) {
 				if ( isset( $sldr_options['first_install'] ) && strtotime( '-1 week' ) > $sldr_options['first_install'] ) {
-					bws_plugin_banner_to_settings( $sldr_plugin_info, 'sldr_options', 'slider', 'admin.php?page=slider-settings.php', 'admin.php?page=slider-new.php' );
+					bws_plugin_banner_to_settings( $sldr_plugin_info, 'sldr_options', 'slider-bws', 'admin.php?page=slider-settings.php', 'admin.php?page=slider-new.php' );
 				}
 			} else {
 				bws_plugin_suggest_feature_banner( $sldr_plugin_info, 'sldr_options', 'slider' );

@@ -3,7 +3,6 @@
  * Displays the content on the plugin settings page
  */
 
-require_once( dirname( dirname( __FILE__ ) ) . '/bws_menu/class-bws-settings.php' );
 
 if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 	class Sldr_Settings_Tabs extends Bws_Settings_Tabs {
@@ -66,6 +65,7 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 		 * @return array    The action results
 		 */
 		public function save_options() {
+			$message = $notice = $error = '';
 
 			/* Global Settings */
 			if ( $this->is_general_settings ) {
@@ -105,9 +105,9 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 				<?php $wp_gallery_media_table->views(); ?>
 			</div>
 			<div class="clear"></div>
-			<ul tabindex="-1" class="attachments ui-sortable ui-sortable-disabled hide-if-no-js" id="sldr-attachments">
-				<?php $wp_gallery_media_table->display_rows(); ?>
-			</ul>
+				<ul tabindex="-1" class="attachments ui-sortable ui-sortable-disabled hide-if-no-js" id="sldr-attachments">
+					<?php $wp_gallery_media_table->display_rows(); ?>
+				</ul>
 			<div class="clear"></div>
 			<div id="hidden"></div>
 		<?php }
@@ -160,7 +160,6 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
                                                 echo( "<option value='" . $id . "' " . $selected . ">" . $sliders[ $i ]['title'] . "( id=" . $id . " )</option>");
                                             } ?>
                                     </select>
-                                    <span class="bws_info"><?php _e( 'which slider SHOULD BE DISPLAYED', 'slider-bws' ); ?></span>
                                 </label>
                             </td>
                         </tr>
@@ -217,11 +216,11 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 						</td>
 					</tr>
 					<tr>
-						<th><?php _e( 'Number of Visible Images per Slide', 'slider-bws' ); ?></th>
+						<th><?php _e( 'Number of Visible Images', 'slider-bws' ); ?></th>
 						<td>
 							<label>
 								<input type="number" name="sldr_items" min="1" max="10" value="<?php echo $this->options['items']; ?>" /> 
-								<span class="bws_info"><?php _e( 'Number of Images which are displayed simultaneously on a single slide.', 'slider-bws' ); ?></span>
+								<span class="bws_info"><?php _e( 'Image(-s) per slide', 'slider-bws' ); ?></span>
 							</label>
 						</td>
 					</tr>

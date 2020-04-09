@@ -65,7 +65,7 @@ function sldr_setError( msg ) {
 								}
 							}
 						});
-						$('<input type="hidden" name="sldr_new_image[]" id="sldr_new_image" value="' + item.id + '" />').appendTo( '#hidden' );
+						$('<input type="hidden" name="sldr_new_image[]" id="sldr_new_image_' + item.id + '" value="' + item.id + '" />').appendTo( '#hidden' );
 					});
 				});
 			}
@@ -96,21 +96,25 @@ function sldr_setError( msg ) {
 		$( '.sldr-media-bulk-select-button' ).on( 'click', function() {
 			$( '.attachments' ).sortable( 'disable' ).addClass( 'bulk-selected' );
 			$( '.sldr-wp-filter' ).addClass( 'selected' );
-			$( '.sldr-media-attachment' ).on( 'click', function(){
-				if ( $( this ).hasClass( 'details' ) )
-					$( this ).removeClass( 'details' ).removeClass( 'selected' );
-				else
-					$( this ).addClass( 'details' ).addClass( 'selected' );
-				if ( $( '.sldr-media-attachment.selected' ).length > 0 )
+			$( '.sldr-media-attachment' ).on( 'click', function() {
+				var attachment_id = $( this ).find( '.sldr_attachment_id' ).val();
+				if ( $( this ).hasClass( 'details' ) ) {
+					$( this ).removeClass( 'details selected' );		
+					$( '#sldr_new_image_' + attachment_id ).removeClass( 'selected remove-selected' );
+				} else {
+					$( this ).addClass( 'details selected' );
+					$( '#sldr_new_image_' + attachment_id ).addClass( 'selected remove-selected' );	
+				}	
+				if ( $( this ).length > 0 )
 					$( '.sldr-media-bulk-delete-selected-button' ).removeAttr( 'disabled' );
 				else
 					$( '.sldr-media-bulk-delete-selected-button' ).attr( 'disabled', 'disabled' );
 			});
-			$( '.sldr-media-check' ).on( 'click', function(){
+			$( '.sldr-media-check' ).on( 'click', function() {
 				if ( $( this ).parent().hasClass( 'details' ) )
-					$( this ).parent().removeClass( 'details' ).removeClass( 'selected' );
-				else
-					$( this ).parent().addClass( 'details' ).addClass( 'selected' );
+					$( this ).parent().removeClass( 'details selected' );
+				else 
+					$( this ).parent().addClass( 'details selected' );
 				if ( $( '.sldr-media-attachment.selected' ).length > 0 )
 					$( '.sldr-media-bulk-delete-selected-button' ).removeAttr( 'disabled' );
 				else
@@ -134,12 +138,12 @@ function sldr_setError( msg ) {
 			if ( window.confirm( sldr_vars.warnSingleDelete ) ) {
 				var attachment_id = $( this ).parent().find( '.sldr_attachment_id' ).val(),
 					slider_id = $( this ).parent().find( '.sldr_slider_id' ).val();
-
 				$.ajax({
 					url: '../wp-admin/admin-ajax.php',
 					type: "POST",
 					data: "action=sldr_delete_image&delete_id_array=" + attachment_id + "&slider_id=" + slider_id + "&sldr_ajax_nonce_field=" + sldr_vars.sldr_nonce,
 					success: function( result ) {
+						$( '#sldr_new_image_' + attachment_id ).remove();
 						$( '#post-' + attachment_id ).remove();
 						tb_remove();
 						if ( ! $( '.attachments li' ).length )
@@ -164,13 +168,12 @@ function sldr_setError( msg ) {
 						type: "POST",
 						data: "action=sldr_delete_image&delete_id_array=" + delete_id_array + "&slider_id=" + slider_id + "&sldr_ajax_nonce_field=" + sldr_vars.sldr_nonce,
 						success: function( result ) {
-							if ( result == 'updated' ) {
-								$( '.sldr-media-attachment.selected' ).remove();
-								$( '.sldr-media-bulk-delete-selected-button' ).attr( 'disabled', 'disabled' );
-								if ( ! $( '#post-body-content .attachments li' ).length ) {
-									$( '.sldr-media-bulk-cansel-select-button' ).trigger( 'click' );
-									$( '.sldr-media-bulk-select-button' ).hide();
-								}
+							$( '.remove-selected' ).remove();
+							$( '.sldr-media-attachment.selected' ).remove();
+							$( '.sldr-media-bulk-delete-selected-button' ).attr( 'disabled', 'disabled' );
+							if ( ! $( '#post-body-content .attachments li' ).length ) {
+								$( '.sldr-media-bulk-cansel-select-button' ).trigger( 'click' );
+								$( '.sldr-media-bulk-select-button' ).hide();
 							}
 							$( '.sldr-media-spinner' ).css( 'display', 'none' );
 							$( '.attachments' ).removeAttr( 'disabled' );
@@ -180,6 +183,7 @@ function sldr_setError( msg ) {
 			}
 			return false;
 		});
+
 	});
 })(jQuery);
 

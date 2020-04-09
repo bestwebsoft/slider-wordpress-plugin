@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
-Requires at least: 3.9
-Tested up to: 5.2.2
-Stable tag: 1.0.5
+Requires at least: 4.5
+Tested up to: 5.4
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -111,6 +111,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.0.6 - 09.04.2020 =
+* Update : All functionality was updated for WordPress 5.3.2.
+* Update : Owl Carousel 2 library was updated to version 2.3.4.
+
 = V1.0.5 - 04.09.2019 =
 * Update: The deactivation feedback has been changed. Misleading buttons have been removed.
 
@@ -132,6 +136,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.0.6 =
+* Functionality improved.
+* The compatibility with new WordPress version updated.
 
 = V1.0.5 =
 * Usability improved

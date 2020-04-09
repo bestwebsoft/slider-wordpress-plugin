@@ -245,6 +245,11 @@
 .sldr-media-attachment-actions .sldr-media-actions-delete:hover {
 	color:red;
 }
+#sldr_submit .handlediv,
+#sldr_category .handlediv,
+#sldr_shortcode .handlediv {
+	display: none;
+}
 @media screen and (max-width: 1600px) {
 	.sldr-media-attachment {
 		width: calc( 20% - 23px );
