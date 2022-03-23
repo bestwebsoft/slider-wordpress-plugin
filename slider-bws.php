@@ -6,12 +6,12 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.6
+Version: 1.0.8
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  © Copyright 2020 BestWebSoft  ( https://support.bestwebsoft.com )
+/*  © Copyright 2021 BestWebSoft  ( https://support.bestwebsoft.com )
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -1366,7 +1366,9 @@ if ( ! function_exists( 'sldr_settings_page' ) ) {
 		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
     		require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 		require_once( dirname( __FILE__ ) . '/includes/class-sldr-settings.php' );
-		$page = new Sldr_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+		$page = new Sldr_Settings_Tabs( plugin_basename( __FILE__ ) );
+        if ( method_exists( $page, 'add_request_feature' ) )
+            $page->add_request_feature(); ?>
 		<div class="wrap">
 			<h1><?php _e( 'Slider Global Settings', 'slider-bws' ); ?></h1>
             <noscript>

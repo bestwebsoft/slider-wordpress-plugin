@@ -54,7 +54,8 @@ if ( ! class_exists( 'Sldr_Settings_Tabs' ) ) {
 				'default_options' 	 => sldr_get_options_default(),
 				'options' 			 => $options,
 				'tabs' 				 => $tabs,
-				'wp_slug'			 => 'slider-bws'
+				'wp_slug'			 => 'slider-bws',
+                'doc_link'           => 'https://bestwebsoft.com/documentation/slider/slider-user-guide/'
 			) );
 		}
 

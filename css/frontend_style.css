@@ -10,6 +10,7 @@
 	position: absolute;
 	bottom: 50%;
 	background: transparent;
+	outline: none;
 }
 .sldr_wrapper .owl-next i,
 .sldr_wrapper .owl-prev i {

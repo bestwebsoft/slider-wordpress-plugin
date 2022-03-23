@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
 Requires at least: 4.5
-Tested up to: 5.4
-Stable tag: 1.0.6
+Tested up to: 5.9
+Stable tag: 1.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,8 @@ The best responsive slider plugin for your WordPress website. Create beautifully
 Simple WordPress slider plugin which adds responsive and fully functional sliders to your website posts, pages, and widgets. Add an unlimited number of images from your WordPress Media Library, create and configure slides, set captions, and URLs.
 
 Create beautiful slider that fits all your needs!
+
+[View Demo](https://bestwebsoft.com/demo-slider-by-bestwebsoft/?ref=readme)
 
 = Features =
 
@@ -46,12 +48,16 @@ If you have a feature, suggestion or idea you'd like to see in the plugin, we'd 
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] How to Use](https://docs.google.com/document/d/1liDLFCg2T-VODcpvR7cYeNBKSmHcQCG6jA_0fawSkfw/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/slider/slider-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 = Help & Support =
 
 Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
+
+= Affiliate Program =
+
+Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — [https://bestwebsoft.com/affiliate/](https://bestwebsoft.com/affiliate/?utm_source=plugin&utm_medium=readme&utm_campaign=affiliate_program)
 
 = Translation =
 
@@ -99,7 +105,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 - The link to the page where the problem occurs.
 - The name of the plugin and its version. If you are using a pro version - your order number.
 - The version of your WordPress installation.
-- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/).
+- Copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/).
 
 == Screenshots ==
 
@@ -110,6 +116,14 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 5. Slider Separate Settings page.
 
 == Changelog ==
+
+= V1.0.8 - 21.03.2022 =
+* Update : All functionality was updated for WordPress 5.9.
+* Update : BWS Panel section was updated.
+
+= V1.0.7 - 27.08.2021 =
+* Update : All functionality was updated for WordPress 5.8.
+* Update : BWS Panel section was updated.
 
 = V1.0.6 - 09.04.2020 =
 * Update : All functionality was updated for WordPress 5.3.2.
@@ -136,6 +150,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.0.8 =
+* Usability improved
+
+= V1.0.7 =
+* The compatibility with new WordPress version updated.
 
 = V1.0.6 =
 * Functionality improved.
