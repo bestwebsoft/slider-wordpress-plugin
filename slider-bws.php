@@ -6,7 +6,7 @@ Description: Simple and easy to use plugin adds a slider to your web site.
 Author: BestWebSoft
 Text Domain: slider-bws
 Domain Path: /languages
-Version: 1.0.8
+Version: 1.0.9
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
