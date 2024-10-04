@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: best slider, responsive slider, image carousel, video slider, slider plugin, wordpress carousel, widget slider, silder, image rotation, slideshow, image slider plugin, slider categories
-Requires at least: 4.5
-Tested up to: 5.9
-Stable tag: 1.0.9
+Requires at least: 5.6
+Tested up to: 6.6
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -117,7 +117,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
-= V1.0.9 - 216.04.2022 =
+= V1.1.0 - 04.10.2024 =
+* Update : All functionality was updated for WordPress 6.6.
+* Bugfix : Fixed for Twenty Twenty-Two and Twenty Twenty-Three.
+* NEW: The height of the slider was added.
+
+= V1.0.9 - 16.04.2022 =
 * Bugfix : Deactivation Feedback fix.
 
 = V1.0.8 - 21.03.2022 =
@@ -153,6 +158,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * Plugin released.
 
 == Upgrade Notice ==
+
+= V1.1.0 =
+* The compatibility with new WordPress version updated.
+* New features added.
+* Bugs fixed.
 
 = V1.0.9 =
 * Bugs fixed.

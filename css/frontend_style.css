@@ -65,7 +65,9 @@
 .sldr_wrapper .owl-carousel div .sldr_textoverlay a:hover {
 	background: #007acc;
 }
-
+.sldr_wrapper .owl-carousel .sldr_textoverlay video {
+	max-width: 100%;
+}
 /* Style for booking search form */
 .sldr_bkng_wrapper {
 	margin-bottom: 15px;
