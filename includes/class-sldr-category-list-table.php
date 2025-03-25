@@ -184,7 +184,7 @@ class Sldr_Category_List_Table extends WP_List_Table {
 		$per_page_option = get_current_screen()->get_option( 'per_page' );
 		$current_page    = $this->get_pagenum();
 		/* Prepare query params, as usual current page, order by and order direction */
-		$order = isset( $_REQUEST['order'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) : 'asc';
+		$order = isset( $_REQUEST['order'] ) && in_array( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ), array( 'asc', 'desc' ) ) ? sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) : 'asc';
 
 		/* Pagination */
 		$per_page_query = get_user_meta( get_current_user_id(), $per_page_option['option'] );
